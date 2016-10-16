@@ -6,6 +6,7 @@
 #include "Volume.h"
 #include "VectorField.h"
 #include "MultiSet.h"
+#include "Window.h"
 
 #include <QMainWindow>
 #include <QPushButton>
@@ -19,44 +20,45 @@ class MainWindow : public QMainWindow
 {
 	Q_OBJECT
 
-	public:
+public:
 
-		MainWindow(QWidget *parent = 0);
-		~MainWindow();
+	MainWindow(QWidget *parent = 0);
+	~MainWindow();
 
-	
+
 	protected slots :
 
-		void								 openFileAction();
-		void								 closeAction();
-		
-
-	private:
-
-		// USER INTERFACE ELEMENTS
-
-		Ui_MainWindow						*m_Ui;
+	void								 openFileAction();
+	void								 closeAction();
 
 
-		// DATA 
+private:
 
-		enum DataType
-		{
-			VOLUME					= 0,
-			VECTORFIELD				= 1,
-			MULTIVARIATE			= 2
-		};
+	// USER INTERFACE ELEMENTS
 
-		struct FileType
-		{
-			QString			filename;
-			DataType		type;
-		}									 m_FileType;
+	Ui_MainWindow						*m_Ui;
 
-		Volume								*m_Volume;						// for Volume-Rendering
-		VectorField							*m_VectorField;					// for Flow-Visualisation
-		MultiSet							*m_MultiSet;					// for Multivariate Data
 
+	// DATA 
+
+	enum DataType
+	{
+		VOLUME = 0,
+		VECTORFIELD = 1,
+		MULTIVARIATE = 2
+	};
+
+	struct FileType
+	{
+		QString			filename;
+		DataType		type;
+	}									 m_FileType;
+
+	Volume								*m_Volume;						// for Volume-Rendering
+	VectorField							*m_VectorField;					// for Flow-Visualisation
+	MultiSet							*m_MultiSet;					// for Multivariate Data
+
+	Window* currentWindow;
 };
 
 #endif

@@ -150,6 +150,8 @@
     <ClCompile Include="src\Vector.cpp" />
     <ClCompile Include="src\VectorField.cpp" />
     <ClCompile Include="src\Volume.cpp" />
+    <ClCompile Include="src\Widget.cpp" />
+    <ClCompile Include="src\Window.cpp" />
   </ItemGroup>
   <ItemGroup>
     <CustomBuild Include="src\MainWindow.h">
@@ -182,6 +184,8 @@
     <ClInclude Include="src\Vector.h" />
     <ClInclude Include="src\VectorField.h" />
     <ClInclude Include="src\Volume.h" />
+    <ClInclude Include="src\Widget.h" />
+    <ClInclude Include="src\Window.h" />
   </ItemGroup>
   <ItemGroup>
     <CustomBuild Include="res\MainWindow.ui">

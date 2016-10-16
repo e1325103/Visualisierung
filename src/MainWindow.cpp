@@ -81,6 +81,11 @@ void MainWindow::openFileAction()
 			else if (m_FileType.type == VECTORFIELD) type = "VECTORFIELD";
 			else if (m_FileType.type == MULTIVARIATE) type = "MULTIVARIATE";
 			m_Ui->labelTop->setText("File LOADED [" + filename + "] - Type [" + type + "]");
+
+			if (m_FileType.type == VECTORFIELD) {
+				currentWindow = new Window(m_VectorField);
+				currentWindow->show();
+			}
 		}
 		else
 		{
