@@ -1,7 +1,7 @@
 #include "Widget.h"
 
 Widget::Widget(EulerIntegration* _eulerIntegration, QWidget* _parent) : QWidget(_parent), eulerIntegration(_eulerIntegration) {
-	setMinimumSize(200, 200);
+	setMinimumSize(_eulerIntegration->vectorField->width() + 40, _eulerIntegration->vectorField->height() + 40);
 }
 
 Widget::~Widget() {

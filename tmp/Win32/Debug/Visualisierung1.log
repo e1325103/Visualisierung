@@ -1,5 +1,5 @@
-﻿Der Buildvorgang wurde am 16.10.2016 21:48:38 gestartet.
-     1>Projekt "C:\Users\Thomas\Source\Repos\Visualisierung\Visualisierung1.vcxproj" auf Knoten "2", Build Ziel(e).
+﻿Der Buildvorgang wurde am 18.10.2016 18:58:46 gestartet.
+     1>Projekt "C:\Users\nicol\GIT\Visualisierung\Visualisierung1.vcxproj" auf Knoten "2", Build Ziel(e).
      1>CustomBuild:
          MOC MainWindow.h
          UIC MainWindow.ui
@@ -27,9 +27,10 @@
          tmp\Win32\Debug\Volume.obj
          tmp\Win32\Debug\Widget.obj
          tmp\Win32\Debug\Window.obj
-         Visualisierung1.vcxproj -> C:\Users\Thomas\Source\Repos\Visualisierung\bin\Win32\Debug\Visualisierung1.exe
-     1>Die Erstellung des Projekts "C:\Users\Thomas\Source\Repos\Visualisierung\Visualisierung1.vcxproj" ist abgeschlossen, Build Ziel(e).
+         LINK : bin\Win32\Debug\Visualisierung1.exe wurde nicht gefunden oder beim letzten inkrementellen Linkvorgang nicht erstellt; vollständiger Link wird durchgeführt.
+         Visualisierung1.vcxproj -> C:\Users\nicol\GIT\Visualisierung\bin\Win32\Debug\Visualisierung1.exe
+     1>Die Erstellung des Projekts "C:\Users\nicol\GIT\Visualisierung\Visualisierung1.vcxproj" ist abgeschlossen, Build Ziel(e).
 
 Build erfolgreich.
 
-Verstrichene Zeit 00:00:11.38
+Verstrichene Zeit 00:00:10.83

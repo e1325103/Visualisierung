@@ -1,6 +1,5 @@
 #include "MainWindow.h"
 
-
 #include <QFileDialog>
 
 #include <QPainter>

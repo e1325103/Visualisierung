@@ -20,45 +20,45 @@ class MainWindow : public QMainWindow
 {
 	Q_OBJECT
 
-	public:
+public:
 
-		MainWindow(QWidget *parent = 0);
-		~MainWindow();
+	MainWindow(QWidget *parent = 0);
+	~MainWindow();
 
-	
+
 	protected slots :
 
-		void								 openFileAction();
-		void								 closeAction();
-		
+	void								 openFileAction();
+	void								 closeAction();
 
-	private:
 
-		// USER INTERFACE ELEMENTS
+private:
 
-		Ui_MainWindow						*m_Ui;
+	// USER INTERFACE ELEMENTS
 
-		Window* currentWindow;
+	Ui_MainWindow						*m_Ui;
 
-		// DATA 
 
-		enum DataType
-		{
-			VOLUME					= 0,
-			VECTORFIELD				= 1,
-			MULTIVARIATE			= 2
-		};
+	// DATA 
 
-		struct FileType
-		{
-			QString			filename;
-			DataType		type;
-		}									 m_FileType;
+	enum DataType
+	{
+		VOLUME = 0,
+		VECTORFIELD = 1,
+		MULTIVARIATE = 2
+	};
 
-		Volume								*m_Volume;						// for Volume-Rendering
-		VectorField							*m_VectorField;					// for Flow-Visualisation
-		MultiSet							*m_MultiSet;					// for Multivariate Data
+	struct FileType
+	{
+		QString			filename;
+		DataType		type;
+	}									 m_FileType;
 
+	Volume								*m_Volume;						// for Volume-Rendering
+	VectorField							*m_VectorField;					// for Flow-Visualisation
+	MultiSet							*m_MultiSet;					// for Multivariate Data
+
+	Window* currentWindow;
 };
 
 #endif
