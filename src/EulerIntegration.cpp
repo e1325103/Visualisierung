@@ -15,7 +15,7 @@ EulerIntegration::~EulerIntegration() {
 void EulerIntegration::paint(QPainter* painter, QPaintEvent* event, int elapsed) {
 	painter->fillRect(event->rect(), background);
 	QPen pen;
-	pen.setColor(QColor(255, 255, 255));
+	pen.setColor(QColor(0, 0, 0));
 	for (auto lineIterator = lines.begin(); lineIterator != lines.end(); lineIterator++) {
 		std::list<QPoint> points = *lineIterator;
 		float i = 0.0f;
@@ -42,17 +42,29 @@ void EulerIntegration::paint(QPainter* painter, QPaintEvent* event, int elapsed)
 }
 
 void EulerIntegration::simulate() {
+	int currentX = 0;
+	int currentY = 0;
 	for (int i = 0; i < pointCount; i++) {
 		float x = 0 + (rand() % (int)(vectorField->width()));
 		float y = 0 + (rand() % (int)(vectorField->height()));
+		/*float x = (float)currentX;
+		float y = (float)currentY;
+
+		currentX += 10;
+		if (currentX >= vectorField->width()) {
+			currentX = 0;
+			currentY += 10;
+			currentY %= vectorField->height();
+		}*/
+
 		std::list<QPoint> points;
 		int lastX = -1;
 		int lastY = -1;
 		bool outside = false;
 		for (int j = 0; j < steps && !outside; j++) {
 			Vector2 v = vectorField->vector((int)x, (int)y);
-			x = x + v.y() * delta;
-			y = y - v.x() * delta;
+			x = x - v.x() * delta;
+			y = y - v.y() * delta;
 			if (((int)x != lastX) && ((int)y != lastY)) {
 				lastX = (int)x;
 				lastY = (int)y;
