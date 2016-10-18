@@ -3,10 +3,10 @@
 #include "Widget.h"
 
 Window::Window(VectorField* vectorField) {
-	eulerIntegration = new EulerIntegration(vectorField, 500, 1.0f/10.0f, 1000);
-	eulerIntegration->simulate();
+	integrator = new RungeKuttaIntegration(vectorField, 500, 1.0f/20.0f, 1500);
+	integrator->simulate();
 	setWindowTitle(tr("Euler Integration"));
-	Widget* widget = new Widget(eulerIntegration, this);
+	Widget* widget = new Widget(integrator, this);
 
 	QGridLayout* layout = new QGridLayout();
 	layout->addWidget(widget);

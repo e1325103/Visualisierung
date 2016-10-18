@@ -1,5 +1,6 @@
 #pragma once
 #include "EulerIntegration.h"
+#include "RungeKuttaIntegration.h"
 #include <QGridLayout>
 
 class Window : public QWidget
@@ -9,5 +10,5 @@ public:
 	~Window();
 
 private:
-	EulerIntegration* eulerIntegration;
+	RungeKuttaIntegration* integrator;
 };
