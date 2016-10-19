@@ -6,10 +6,10 @@
 class Widget : public QWidget
 {
 public:
-	Widget(RungeKuttaIntegration* eulerIntegration, QWidget* parent);
+	Widget(EulerIntegration* eulerIntegration, QWidget* parent);
 	~Widget();
 protected:
 	void paintEvent(QPaintEvent* event) Q_DECL_OVERRIDE;
 private:
-	RungeKuttaIntegration* eulerIntegration;
+	EulerIntegration* eulerIntegration;
 };

@@ -10,5 +10,5 @@ public:
 	~Window();
 
 private:
-	RungeKuttaIntegration* integrator;
+	EulerIntegration* integrator;
 };

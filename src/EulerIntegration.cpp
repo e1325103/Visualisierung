@@ -62,7 +62,19 @@ void EulerIntegration::simulate() {
 		int lastY = -1;
 		bool outside = false;
 		for (int j = 0; j < steps && !outside; j++) {
-			Vector2 v = vectorField->vector((int)x, (int)y);
+			float topX = ceilf(x);
+			float topY = ceilf(y);
+			float bottomX = floorf(x);
+			float bottomY = floorf(y);
+			float deltaX = fabsf(topX - bottomX);
+			float deltaY = fabsf(topY - bottomY);
+			Vector2 v1 = vectorField->vector((int)topX, (int)topY);
+			Vector2 v2 = vectorField->vector((int)bottomX, (int)bottomY);
+			Vector2 v3 = vectorField->vector((int)bottomX, (int)topY);
+			Vector2 v4 = vectorField->vector((int)topX, (int)bottomY);
+			Vector2 vTop = v3 * deltaX + v1 * (1.0f - deltaX);
+			Vector2 vBottom = v4 * deltaX + v2 * (1.0f - deltaX);
+			Vector2 v = vBottom * deltaY + vBottom * (1.0f - deltaY);
 			x = x - v.x() * delta;
 			y = y - v.y() * delta;
 			if (((int)x != lastX) && ((int)y != lastY)) {
