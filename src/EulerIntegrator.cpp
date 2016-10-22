@@ -12,7 +12,7 @@ void EulerIntegrator::simulate() {
 		int lastY = -1;
 		bool outside = false;
 		for (int j = 0; j < steps && !outside; j++) {
-			Vector2 v = vectorField->vector((int)y, (int)x); //g
+			Vector2 v = vectorField->vector((int)y, (int)x); //gg
 			x = x + v.x() * delta;
 			y = y + v.y() * delta;
 			if (((int)x != lastX) && ((int)y != lastY)) {
