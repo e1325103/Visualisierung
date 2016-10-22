@@ -143,11 +143,12 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="generated\moc_MainWindow.cpp" />
-    <ClCompile Include="src\EulerIntegration.cpp" />
+    <ClCompile Include="src\EulerIntegrator.cpp" />
+    <ClCompile Include="src\Integrator.cpp" />
     <ClCompile Include="src\Main.cpp" />
     <ClCompile Include="src\MainWindow.cpp" />
     <ClCompile Include="src\MultiSet.cpp" />
-    <ClCompile Include="src\RungeKuttaIntegration.cpp" />
+    <ClCompile Include="src\RungeKuttaIntegrator.cpp" />
     <ClCompile Include="src\Vector.cpp" />
     <ClCompile Include="src\VectorField.cpp" />
     <ClCompile Include="src\Volume.cpp" />
@@ -180,9 +181,10 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="generated\ui_MainWindow.h" />
-    <ClInclude Include="src\EulerIntegration.h" />
+    <ClInclude Include="src\EulerIntegrator.h" />
+    <ClInclude Include="src\Integrator.h" />
     <ClInclude Include="src\MultiSet.h" />
-    <ClInclude Include="src\RungeKuttaIntegration.h" />
+    <ClInclude Include="src\RungeKuttaIntegrator.h" />
     <ClInclude Include="src\Vector.h" />
     <ClInclude Include="src\VectorField.h" />
     <ClInclude Include="src\Volume.h" />

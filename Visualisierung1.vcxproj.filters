@@ -37,16 +37,19 @@
     <ClCompile Include="src\MultiSet.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="src\EulerIntegration.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
     <ClCompile Include="src\Widget.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="src\Window.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="src\RungeKuttaIntegration.cpp">
+    <ClCompile Include="src\Integrator.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="src\EulerIntegrator.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="src\RungeKuttaIntegrator.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
@@ -74,16 +77,19 @@
     <ClInclude Include="src\MultiSet.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="src\EulerIntegration.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
     <ClInclude Include="src\Widget.h">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="src\Window.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="src\RungeKuttaIntegration.h">
+    <ClInclude Include="src\Integrator.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="src\EulerIntegrator.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="src\RungeKuttaIntegrator.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
