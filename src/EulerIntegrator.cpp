@@ -3,16 +3,20 @@
 void EulerIntegrator::simulate() {
 	int currentX = 0;
 	int currentY = 0;
-	for (int i = 0; i < pointCount; i++) {
-		float x = 0 + (rand() % (int)(vectorField->width()));
-		float y = 0 + (rand() % (int)(vectorField->height()));
+	seedGenerator->start();
+	while (!seedGenerator->isFinished()) {
+
+		QPoint startPoint = seedGenerator->getNextPoint();
+		float x = (float)startPoint.x();
+		float y = (float)startPoint.y();
 
 		std::list<QPoint> points;
 		int lastX = -1;
 		int lastY = -1;
 		bool outside = false;
 		for (int j = 0; j < steps && !outside; j++) {
-			Vector2 v = vectorField->vector((int)y, (int)x); //gg
+			Vector2 v = vectorField->vector((int)x, (int)y); //gg
+			//v.normalise();
 			x = x + v.x() * delta;
 			y = y + v.y() * delta;
 			if (((int)x != lastX) && ((int)y != lastY)) {

@@ -3,7 +3,7 @@
 
 class RungeKuttaIntegrator : public Integrator {
 public:
-	RungeKuttaIntegrator(VectorField* _vectorField, int _pointCount, float _delta, int _steps) : Integrator(_vectorField, _pointCount, _delta, _steps) {
+	RungeKuttaIntegrator(VectorField* _vectorField, SeedGenerator* _seedGenerator, float _delta, int _steps) : Integrator(_vectorField, _seedGenerator, _delta, _steps) {
 
 	}
 	void simulate();

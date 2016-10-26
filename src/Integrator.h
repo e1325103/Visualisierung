@@ -1,4 +1,5 @@
 #pragma once
+#include "SeedGenerator.h"
 #include "VectorField.h"
 #include "Vector.h"
 
@@ -9,8 +10,8 @@ class Integrator
 {
 public:
 	explicit
-		Integrator(VectorField* _vectorField, int _pointCount, float _delta, int _steps) :
-		vectorField(_vectorField), pointCount(_pointCount), delta(_delta), steps(_steps) { }
+		Integrator(VectorField* _vectorField, SeedGenerator* _seedGenerator, float _delta, int _steps) :
+		vectorField(_vectorField), seedGenerator(_seedGenerator), delta(_delta), steps(_steps) { }
 	~Integrator();
 	virtual void simulate() = 0;
 	void paint(QPainter* painter, QPaintEvent* event, int elapsed);
@@ -18,7 +19,7 @@ public:
 
 	VectorField* vectorField;
 protected:
-	int pointCount;
+	SeedGenerator* seedGenerator;
 	float delta;
 	int steps;
 	std::list<std::list<QPoint>> lines;
