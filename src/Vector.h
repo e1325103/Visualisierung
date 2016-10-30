@@ -77,6 +77,7 @@ class Vector3
 	public:
 
 		Vector3();
+		Vector3(Vector2 xy, const float z);
 		Vector3(const float x, const float y, const float z);
 		Vector3(const float values[]);
 
@@ -101,8 +102,10 @@ class Vector3
 		// VECTOR MATH
 
 		const float magnitude() const;
+		const float magnitudeXY() const;
 
 		void normalise();
+		void normaliseXY();
 		void invert();
 
 		const float dot(const Vector3 &other) const;

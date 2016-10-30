@@ -1,7 +1,7 @@
 #include "Widget.h"
 
 Widget::Widget(Integrator* _integrator, QWidget* _parent) : QWidget(_parent), integrator(_integrator) {
-	setMinimumSize(_integrator->vectorField->width() + 40, _integrator->vectorField->height() + 40);
+	setMinimumSize(_integrator->vectorField->width() * 2 + 40, _integrator->vectorField->height() * 2 + 40);
 }
 
 Widget::~Widget() {

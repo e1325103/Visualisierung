@@ -3,6 +3,7 @@
 #include "VectorField.h"
 #include "Vector.h"
 
+#include <cfloat>
 #include <QPainter>
 #include <QPaintEvent>
 
@@ -15,12 +16,15 @@ public:
 	~Integrator();
 	virtual void simulate() = 0;
 	void paint(QPainter* painter, QPaintEvent* event, int elapsed);
-	Vector2 interpolateBilinear(float x, float y);
+	Vector3 interpolateBilinear(float x, float y);
 
 	VectorField* vectorField;
 protected:
 	SeedGenerator* seedGenerator;
 	float delta;
 	int steps;
-	std::list<std::list<QPoint>> lines;
+	std::list<std::list<Vector3>> lines;
+
+	float maxParameter = 0.000001f;
+	float minParameter = 0.0f;
 };

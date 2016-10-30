@@ -216,6 +216,13 @@ Vector3::Vector3(const float x, const float y, const float z)
 	m_Elements[2] = z;
 }
 
+Vector3::Vector3(Vector2 xy, const float z)
+{
+	m_Elements[0] = xy.x();
+	m_Elements[1] = xy.y();
+	m_Elements[2] = z;
+}
+
 Vector3::Vector3(const float vfValues[])
 {
 	m_Elements[0] = vfValues[0];
@@ -279,11 +286,26 @@ const float Vector3::magnitude() const
 	return sqrtf(x()*x() + y()*y() + z()*z());
 }
 
+const float Vector3::magnitudeXY() const
+{
+	return sqrtf(x()*x() + y()*y());
+}
+
 void Vector3::normalise()
 {
 	float magnitude = (*this).magnitude();
 	if (magnitude > 0.0f)
 		(*this) /= magnitude;
+}
+
+
+void Vector3::normaliseXY()
+{
+	float magnitude = (*this).magnitude();
+	if (magnitude > 0.0f) {
+		m_Elements[0] /= magnitude;
+		m_Elements[1] /= magnitude;
+	}
 }
 
 void Vector3::invert()
