@@ -1,8 +1,10 @@
 #include "Integrator.h"
 
 void Integrator::paint(QPainter* painter, QPaintEvent* event, int elapsed) {
-	float maxParameter = 0.0015f;
-	float minParameter = 0.0f;
+	/*float maxParameter = 0.0015f;
+	float minParameter = 0.0f;*/
+	float maxParameter = 100;
+	float minParameter = -100;
 	painter->fillRect(event->rect(), QBrush(QColor(255, 255, 250)));
 	QPen pen;
 	pen.setWidth(1);
@@ -10,8 +12,8 @@ void Integrator::paint(QPainter* painter, QPaintEvent* event, int elapsed) {
 		for (int y = 0; y < 998; y++) {
 			float val = interpolateBilinear(((float)y / 2.0f), ((float)x / 2.0f)).z();
 			val = (val - minParameter) * (1.0f / (maxParameter - minParameter));
-			//pen.setColor(QColor((int)(255.0f * val), (int)(0.0f), (int)(255 * (1.0f - val))));
-			pen.setColor(QColor((int)(0.0f), (int)(255.0f * val), (int)(255 * (1.0f - val))));
+			pen.setColor(QColor((int)(255.0f * val), (int)(0.0f), (int)(255 * (1.0f - val))));
+			//pen.setColor(QColor((int)(0.0f), (int)(255.0f * val), (int)(255 * (1.0f - val))));
 			painter->setPen(pen);
 			painter->drawPoint(QPoint(x, y));
 		}
@@ -60,10 +62,10 @@ Vector3 Integrator::interpolateBilinear(float x, float y) {
 	float bottomY = floorf(y);
 	float deltaX = fabsf(topX - x);
 	float deltaY = fabsf(topY - y);
-	Vector3 v1 = Vector3(vectorField->vector((int)topX, (int)topY), vectorField->parameter((int)topX, (int)topY)[1]);
-	Vector3 v2 = Vector3(vectorField->vector((int)bottomX, (int)bottomY), vectorField->parameter((int)bottomX, (int)bottomY)[1]);
-	Vector3 v3 = Vector3(vectorField->vector((int)topX, (int)bottomY), vectorField->parameter((int)topX, (int)bottomY)[1]);
-	Vector3 v4 = Vector3(vectorField->vector((int)bottomX, (int)topY), vectorField->parameter((int)bottomX, (int)topY)[1]);
+	Vector3 v1 = Vector3(vectorField->vector((int)topX, (int)topY), vectorField->parameter((int)topX, (int)topY)[0]);
+	Vector3 v2 = Vector3(vectorField->vector((int)bottomX, (int)bottomY), vectorField->parameter((int)bottomX, (int)bottomY)[0]);
+	Vector3 v3 = Vector3(vectorField->vector((int)topX, (int)bottomY), vectorField->parameter((int)topX, (int)bottomY)[0]);
+	Vector3 v4 = Vector3(vectorField->vector((int)bottomX, (int)topY), vectorField->parameter((int)bottomX, (int)topY)[0]);
 	Vector3 vTop = v3 * deltaX + v1 * (1.0f - deltaX);
 	Vector3 vBottom = v4 * deltaX + v2 * (1.0f - deltaX);
 	return  vBottom * deltaY + vTop * (1.0f - deltaY);
