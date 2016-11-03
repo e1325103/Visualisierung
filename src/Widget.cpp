@@ -9,9 +9,13 @@ Widget::~Widget() {
 }
 
 void Widget::paintEvent(QPaintEvent* event) {
+	if (redraw) {
+		currentPix = integrator->paint();
+		redraw = false;
+	}
 	QPainter painter;
 	painter.begin(this);
 	painter.setRenderHint(QPainter::Antialiasing);
-	integrator->paint(&painter, event, 0);
+	painter.drawPixmap(0, 0, 1000, 1000, currentPix, 0, 0, 500, 500);
 	painter.end();
 }

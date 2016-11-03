@@ -51,4 +51,6 @@ private:
 	Vector2*						m_Vectors;
 	Parameter*						m_Parameters;
 
+	bool							swapped = false;
+
 };

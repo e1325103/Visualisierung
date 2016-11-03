@@ -15,8 +15,9 @@ public:
 		vectorField(_vectorField), seedGenerator(_seedGenerator), delta(_delta), steps(_steps) { }
 	~Integrator();
 	virtual void simulate() = 0;
-	void paint(QPainter* painter, QPaintEvent* event, int elapsed);
+	QPixmap paint();
 	Vector3 interpolateBilinear(float x, float y);
+	Vector3 interpolateBilinear(float x, float y, int parameter);
 
 	VectorField* vectorField;
 protected:
@@ -25,6 +26,6 @@ protected:
 	int steps;
 	std::list<std::list<Vector3>> lines;
 
-	float maxParameter = 0.000001f;
-	float minParameter = 0.0f;
+	void paintBackgroundParameter(QPainter* painter, int parameter, Vector3 color1, Vector3 color2);
+	void paintLines(QPainter* painter, int width, Vector3 color);
 };

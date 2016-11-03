@@ -1,5 +1,5 @@
 #pragma once
-#include <QPainter>
+#include "Vector.h"
 
 #include <list>
 
@@ -9,9 +9,9 @@ public:
 	SeedGenerator(int _width, int _height);
 	~SeedGenerator();
 
-	virtual QPoint getNextPoint() = 0;
+	virtual Vector2 getNextPoint() = 0;
 	virtual void start() = 0;
-	virtual bool update(QPoint point) = 0;
+	virtual bool update(Vector2 point) = 0;
 	virtual bool isFinished() = 0;
 protected:
 	int width;

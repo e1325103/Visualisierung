@@ -5,7 +5,7 @@
 #include "EvenSpacedSeedGenerator.h"
 
 Window::Window(VectorField* vectorField) {
-	integrator = new RungeKuttaIntegrator(vectorField, new RandomSeedGenerator(vectorField->width(), vectorField->height(), 1), 1.0f / 1.0f, 1000);
+	integrator = new RungeKuttaIntegrator(vectorField, new EvenSpacedSeedGenerator(vectorField->width(), vectorField->height(), 10), 1.0f / 1.0f, 100);
 	integrator->simulate();
 	setWindowTitle(tr("Euler Integration"));
 	Widget* widget = new Widget(integrator, this);

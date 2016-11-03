@@ -6,7 +6,7 @@ void EulerIntegrator::simulate() {
 	seedGenerator->start();
 	while (!seedGenerator->isFinished()) {
 
-		QPoint startPoint = seedGenerator->getNextPoint();
+		Vector2 startPoint = seedGenerator->getNextPoint();
 		float x = (float)startPoint.x();
 		float y = (float)startPoint.y();
 

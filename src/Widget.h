@@ -12,4 +12,6 @@ protected:
 	void paintEvent(QPaintEvent* event) Q_DECL_OVERRIDE;
 private:
 	Integrator* integrator;
+	QPixmap currentPix;
+	bool redraw = true;
 };

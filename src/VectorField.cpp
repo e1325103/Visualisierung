@@ -3,6 +3,9 @@
 #include <sstream>
 #include <fstream>
 
+#include <iostream>
+#include <string>
+
 
 //-------------------------------------------------------------------------------------------------
 // VectorField
@@ -23,6 +26,9 @@ const Vector2& VectorField::vector(const int i) const
 
 const Vector2& VectorField::vector(const int x, const int y) const
 {
+	if (swapped) {
+		return m_Vectors[y + x*m_Height];
+	}
 	return m_Vectors[x + y*m_Width];
 }
 
@@ -33,6 +39,9 @@ const VectorField::Parameter& VectorField::parameter(const int i) const
 
 const VectorField::Parameter& VectorField::parameter(const int x, const int y) const
 {
+	if (swapped) {
+		return m_Parameters[y + x*m_Height];
+	}
 	return m_Parameters[x + y*m_Width];
 }
 
@@ -43,11 +52,17 @@ const VectorField::Parameter* VectorField::parameters() const
 
 const int VectorField::width() const
 {
+	if (swapped) {
+		return m_Height;
+	}
 	return m_Width;
 }
 
 const int VectorField::height() const
 {
+	if (swapped) {
+		return m_Width;
+	}
 	return m_Height;
 }
 
@@ -69,6 +84,13 @@ bool VectorField::loadFromFile(QString filename, QProgressBar* progressBar)
 	{
 		std::cerr << "+ Error loading file: " << filenameStr << std::endl;
 		return false;
+	}
+	std::cout << filenameStr.substr(filename.lastIndexOf("/") + 1) << std::endl;
+	if (filenameStr.substr(filename.lastIndexOf("/") + 1) == "block_314x538.gri") {
+		swapped = false;
+	}
+	else {
+		swapped = true;
 	}
 
 	// progress bar
@@ -154,7 +176,7 @@ bool VectorField::loadFromFile(QString filename, QProgressBar* progressBar)
 		vecIdx += 1;
 		float vecY = tmpArray[vecIdx];
 		vecIdx += 2;
-		
+
 		Parameter parameter;
 		parameter.resize(m_NumParameters);
 		for (int p = 0; p < m_NumParameters; p++)
