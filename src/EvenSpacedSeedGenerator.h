@@ -1,13 +1,12 @@
 #pragma once
 #include "SeedGenerator.h"
-#include <vector>
-#include <algorithm>
+#include <queue>
 #include <map>
 
 class EvenSpacedSeedGenerator : public SeedGenerator
 {
 public:
-	EvenSpacedSeedGenerator(int _width, int _height, int _distance);
+	EvenSpacedSeedGenerator(int _width, int _height, int _distance, float _startRel, float _stopRel);
 	~EvenSpacedSeedGenerator();
 
 	Vector2 getNextPoint();
@@ -16,12 +15,16 @@ public:
 	bool isFinished();
 private:
 	std::map<int, std::list<Vector2>*> map;
-	std::list<Vector2> currentLine;
-	std::vector<Vector2> possibleSeeds;
+	std::queue<std::list<Vector2>*> lines;
+	std::list<Vector2>* buildLine;
+	std::queue<Vector2> seedPoints;
+	Vector2 lastAddedPoint;
 	int distance;
+	float startRel;
+	float stopRel;
 	int mapWidth;
 	int mapHeight;
-	int count;
+	bool finished;
 
 	bool EvenSpacedSeedGenerator::checkNeighborhood(Vector2 point);
 	bool EvenSpacedSeedGenerator::checkNeighbor(Vector2 point, int index);

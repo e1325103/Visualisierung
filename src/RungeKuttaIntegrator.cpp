@@ -6,8 +6,16 @@ void RungeKuttaIntegrator::simulate() {
 
 	seedGenerator->start();
 
-	while (!seedGenerator->isFinished()) {
-		Vector2 startPoint = seedGenerator->getNextPoint();
+	bool swapped = false;
+	Vector2 startPoint;
+
+	while (swapped || !seedGenerator->isFinished()) {
+		if (!swapped) {
+			startPoint  = seedGenerator->getNextPoint();
+		}
+		else {
+			delta *= -1.0f;
+		}
 		float x = (float)startPoint.x();
 		float y = (float)startPoint.y();
 

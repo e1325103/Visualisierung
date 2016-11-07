@@ -301,7 +301,7 @@ void Vector3::normalise()
 
 void Vector3::normaliseXY()
 {
-	float magnitude = (*this).magnitude();
+	float magnitude = (*this).magnitudeXY();
 	if (magnitude > 0.0f) {
 		m_Elements[0] /= magnitude;
 		m_Elements[1] /= magnitude;

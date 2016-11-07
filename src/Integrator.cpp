@@ -11,7 +11,7 @@ QPixmap Integrator::paint() {
 
 	paintBackgroundParameter(painter, 0, Vector3(255, 0, 0), Vector3(0, 0, 255));
 
-	paintLines(painter, 1, Vector3(255, 255, 255));
+	paintLines(painter, 3, Vector3(255, 255, 255));
 
 	delete painter;
 	return pix;
@@ -38,10 +38,10 @@ void Integrator::paintLines(QPainter* painter, int width, Vector3 color) {
 			}
 			painter->drawLine(last.x(), last.y(), current.x(), current.y());
 		}
-		else if (points.size() == 1) {
+		/*else if (points.size() == 1) {
 			Vector3 point = *(points.begin()++);
 			painter->drawPoint(point.x(), point.y());
-		}
+		}*/
 	}
 }
 
@@ -65,10 +65,19 @@ void Integrator::paintBackgroundParameter(QPainter* painter, int parameter, Vect
 	pen.setWidth(1);
 	for (int x = 0; x < vectorField->width(); x++) {
 		for (int y = 0; y < vectorField->height(); y++) {
-			float val = interpolateBilinear(x, y, parameter).z();
+			/*float val = interpolateBilinear(x, y, parameter).z();
 			val = (val - minParameter) * (1.0f / (maxParameter - minParameter));
 			Vector3 mixColor = color1 * val + color2 * (1.0f - val);
 			pen.setColor(QColor((int)mixColor.x(), (int)mixColor.y(), (int)mixColor.z()));
+			painter->setPen(pen);
+			painter->drawPoint(QPoint(x, y));*/
+
+			Vector3 vec = interpolateBilinear(x, y);
+			vec.normaliseXY();
+			vec = (vec + Vector3(1, 1, 0)) / 2;
+			float val = 127.5f * vec.x() + 127.5f * vec.y();
+			QColor color = QColor::fromHsv(val, 255, 255);
+			pen.setColor(color);
 			painter->setPen(pen);
 			painter->drawPoint(QPoint(x, y));
 		}

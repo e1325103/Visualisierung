@@ -1,30 +1,18 @@
 #include "EvenSpacedSeedGenerator.h"
 #include <iostream>
 
-EvenSpacedSeedGenerator::EvenSpacedSeedGenerator(int _width, int _height, int _distance) : SeedGenerator(_width, _height), distance(_distance)
+EvenSpacedSeedGenerator::EvenSpacedSeedGenerator(int _width, int _height, int _distance, float _startRel, float _stopRel) : SeedGenerator(_width, _height), distance(_distance), startRel(_startRel), stopRel(_stopRel), finished(false)
 {
-	mapWidth = ceilf((float)SeedGenerator::width / distance);
-	mapHeight = ceilf((float)(float)SeedGenerator::height / distance);
-	count = 0;
+	lastAddedPoint = Vector2(-1, -1);
+	mapWidth = (int)ceilf((float)SeedGenerator::width / distance);
+	mapHeight = (int)ceilf((float)SeedGenerator::height / distance);
 	map = std::map<int, std::list<Vector2>*>();
 	for (int x = 0; x < mapWidth; x++) {
 		for (int y = 0; y < mapHeight; y++) {
 			map[x + y * mapWidth] = new std::list<Vector2>();
-			possibleSeeds.push_back(Vector2((float)x, (float)y));
-			count++;
-			/*for (int i = 0; i < distance; i++) {
-				for (int j = 0; j < distance; j++) {
-					if ((y + j) >= 550.0f) {
-						std::cout << ";";
-					}
-					if (((x + i) < _width) && ((y + j) < _height)) {
-						possibleSeeds.push_back(Vector2((float)x + i, (float)y + j));
-						count++;
-					}
-				}
-			}*/
 		}
 	}
+	buildLine = new std::list<Vector2>();
 }
 
 EvenSpacedSeedGenerator::~EvenSpacedSeedGenerator()
@@ -33,40 +21,78 @@ EvenSpacedSeedGenerator::~EvenSpacedSeedGenerator()
 }
 
 Vector2 EvenSpacedSeedGenerator::getNextPoint() {
-	if (currentLine.size() > 0) {
-		for (Vector2 point : currentLine) {
-			int x = (int)point.x() / distance;
-			int y = (int)point.y() / distance;
+	if (buildLine->size() > 0) {
+		lines.push(buildLine);
+		for (Vector2 point : *buildLine) {
+			int x = (int)(point.x() / distance);
+			int y = (int)(point.y() / distance);
 			map[x + y * mapWidth]->push_back(point);
-			if (((int)point.x() % distance == 0) && ((int)point.y() % distance == 0)) {
-				Vector2 shortPoint = Vector2((float)x, (float)y);
-				auto pointer = possibleSeeds.begin();
-				bool removed = false;
-				while (!removed && pointer != possibleSeeds.end()) {
-					if (*pointer == shortPoint) {
-						possibleSeeds.erase(pointer);
-						count--;
-						removed = true;
+		}
+		buildLine = new std::list<Vector2>();
+	}
+	if (lines.size() > 0) {
+		bool notFound = true;
+		while (notFound)
+		{
+			while ((lines.size() > 0) && (seedPoints.size() == 0)) {
+				std::list<Vector2>* currentLine = lines.front();
+				lines.pop();
+				Vector2 lastPoint = Vector2(-1, -1);
+				for (Vector2 point : *currentLine) {
+					if (lastPoint != Vector2(-1, -1) && ((point - lastPoint).magnitude() < distance)) {
+
+						Vector2 direction = point - lastPoint;
+						direction.normalise();
+						direction *= (distance) * startRel;
+
+						Vector2 seed = lastPoint + Vector2(-direction.y(), direction.x());
+						if ((seed.x() >= 0) && (seed.y() >= 0) && (seed.x() < (width - 1)) && (seed.y() < (height - 1))) {
+							seedPoints.push(seed);
+						}
+						seed = lastPoint + Vector2(direction.y(), -direction.x());
+						if ((seed.x() >= 0) && (seed.y() >= 0) && (seed.x() < (width - 1)) && (seed.y() < (height - 1))) {
+							seedPoints.push(seed);
+						}
+
+						if (lastPoint == currentLine->front()) {
+							seed = lastPoint + Vector2(direction.x(), -direction.y());
+							if ((seed.x() >= 0) && (seed.y() >= 0) && (seed.x() < (width - 1)) && (seed.y() < (height - 1))) {
+								seedPoints.push(seed);
+							}
+							seed = lastPoint + Vector2(-direction.x(), direction.y());
+							if ((seed.x() >= 0) && (seed.y() >= 0) && (seed.x() < (width - 1)) && (seed.y() < (height - 1))) {
+								seedPoints.push(seed);
+							}
+						}
+
+						if (point == currentLine->back()) {
+							seed = point + Vector2(direction.x(), -direction.y());
+							if ((seed.x() >= 0) && (seed.y() >= 0) && (seed.x() < (width - 1)) && (seed.y() < (height - 1))) {
+								seedPoints.push(seed);
+							}
+							seed = point + Vector2(-direction.x(), direction.y());
+							if ((seed.x() >= 0) && (seed.y() >= 0) && (seed.x() < (width - 1)) && (seed.y() < (height - 1))) {
+								seedPoints.push(seed);
+							}
+						}
 					}
-					else {
-						pointer++;
-					}
+					lastPoint = point;
+				}
+				delete currentLine;
+			}
+			while (seedPoints.size() > 0) {
+				Vector2 possibleSeedPoint = seedPoints.front();
+				seedPoints.pop();
+				if (checkNeighborhood(possibleSeedPoint)) {
+					return possibleSeedPoint;
 				}
 			}
+			notFound = lines.size() > 0 && seedPoints.size() == 0;
 		}
-		currentLine.empty();
+		finished = true;
 	}
-	bool ok = false;
-	while (!ok && possibleSeeds.size() > 0)
-	{
-		int pos = 0 + (rand() % count);
-		Vector2 point = possibleSeeds.at(pos);
-		possibleSeeds.erase(possibleSeeds.begin() + pos);
-		count--;
-		std::cout << count << std::endl;
-		if (checkNeighborhood(point)) {
-			return point * distance;
-		}
+	else {
+		return Vector2((float)width / 2, (float)height / 2);
 	}
 	return Vector2((float)nan(""), (float)nan(""));
 }
@@ -76,21 +102,15 @@ void EvenSpacedSeedGenerator::start() {
 
 bool EvenSpacedSeedGenerator::update(Vector2 point) {
 	if (checkNeighborhood(point)) {
-		currentLine.push_back(point);
-		/*int x = (int)point.x() / distance;
-		int y = (int)point.y() / distance;
-		map[x + y * mapWidth]->push_back(point);
-		if (((int)point.x() % distance == 0) && ((int)point.y() % distance == 0)) {
-		Vector2 shortPoint = Vector2((float)x, (float)y);
-		for (auto pointer = possibleSeeds.begin(); pointer != possibleSeeds.end(); pointer++) {
-		if (*pointer == shortPoint) {
-		possibleSeeds.erase(pointer);
-		count--;
-		std::cout << count << std::endl;
-		return true;
+		if ((lastAddedPoint == Vector2(-1, -1)) || ((point - lastAddedPoint).magnitude() >= (distance * (stopRel / 8.0f)))) {
+			int x = (int)(point.x() / distance);
+			int y = (int)(point.y() / distance);
+			if ((x >= 0) && (y >= 0) && (x < mapWidth) && (y < mapHeight)) {
+				//map[x + y * mapWidth]->push_back(point);
+				buildLine->push_back(point);
+				lastAddedPoint = point;
+			}
 		}
-		}
-		}*/
 		return true;
 	}
 	return false;
@@ -144,9 +164,8 @@ bool EvenSpacedSeedGenerator::checkNeighbor(Vector2 point, int index) {
 	if ((x >= 0) && (y >= 0) && (x < mapWidth) && (y < mapHeight)) {
 		std::list<Vector2>* neighbor = map[x + y * mapWidth];
 		for (Vector2 other : *neighbor) {
-			Vector2 distanceVector = other - point;
-			float distanceToOther = sqrt(other.x() * other.x() + other.y() * other.y());
-			if (distanceToOther > distance) {
+			Vector2 distanceToOther = other - point;
+			if (distanceToOther.magnitude() < (distance * stopRel)) {
 				return false;
 			}
 		}
@@ -155,5 +174,5 @@ bool EvenSpacedSeedGenerator::checkNeighbor(Vector2 point, int index) {
 }
 
 bool EvenSpacedSeedGenerator::isFinished() {
-	return possibleSeeds.size() <= 0;
+	return finished;
 }
