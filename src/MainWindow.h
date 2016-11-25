@@ -2,11 +2,19 @@
 #ifndef MAINWINDOW_H
 #define MAINWINDOW_H
 
+#pragma once
+
 #include "ui_MainWindow.h"
 #include "Volume.h"
 #include "VectorField.h"
 #include "MultiSet.h"
 #include "Window.h"
+#include "RandomSeedGenerator.h"
+#include "EulerIntegrator.h"
+#include "VectorField.h"
+#include "Integrator.h"
+#include "Widget.h"
+
 
 #include <QMainWindow>
 #include <QPushButton>
@@ -24,15 +32,25 @@ public:
 
 	MainWindow(QWidget *parent = 0);
 	~MainWindow();
-
-
+	
 	protected slots :
 
-	void								 openFileAction();
-	void								 closeAction();
+	void								openFileAction();
+	void								closeAction();
+	void								licButtonClicked();
+	void								eulerRadioClicked();
+	void								eulerRungeClicked();
+	void								buttonRedrawClicked();
 
 
 private:
+
+	Integrator* integrator;
+	VectorField* vectorField;
+	QPixmap currentPix;
+	bool redraw;
+
+	void setCheckable(bool checkable);
 
 	// USER INTERFACE ELEMENTS
 
