@@ -6,8 +6,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>1085</width>
-    <height>731</height>
+    <width>444</width>
+    <height>585</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -98,16 +98,16 @@
              <property name="maximumSize">
               <size>
                <width>16777215</width>
-               <height>220</height>
+               <height>225</height>
               </size>
              </property>
-             <layout class="QHBoxLayout" name="horizontalLayout_6">
+             <layout class="QVBoxLayout" name="verticalLayout_15">
               <item>
                <widget class="QGroupBox" name="groupIntegration">
                 <property name="maximumSize">
                  <size>
                   <width>16777215</width>
-                  <height>200</height>
+                  <height>210</height>
                  </size>
                 </property>
                 <property name="title">
@@ -166,7 +166,7 @@
                    <property name="maximumSize">
                     <size>
                      <width>16777215</width>
-                     <height>40</height>
+                     <height>42</height>
                     </size>
                    </property>
                    <layout class="QHBoxLayout" name="horizontalLayout_4">
@@ -201,7 +201,7 @@ p, li { white-space: pre-wrap; }
                    <property name="maximumSize">
                     <size>
                      <width>16777215</width>
-                     <height>40</height>
+                     <height>42</height>
                     </size>
                    </property>
                    <layout class="QHBoxLayout" name="horizontalLayout_5">
@@ -222,33 +222,178 @@ p, li { white-space: pre-wrap; }
                   </widget>
                  </item>
                 </layout>
-                <zorder>widget_3</zorder>
-                <zorder>radioRunge</zorder>
-                <zorder>widget_8</zorder>
-                <zorder>widget_9</zorder>
-                <zorder>widget_10</zorder>
                </widget>
               </item>
              </layout>
             </widget>
            </item>
            <item>
-            <widget class="QWidget" name="widget_4" native="true">
+            <widget class="QWidget" name="widget_14" native="true">
              <property name="maximumSize">
               <size>
                <width>16777215</width>
-               <height>40</height>
+               <height>250</height>
               </size>
              </property>
-             <layout class="QVBoxLayout" name="verticalLayout_6">
+             <layout class="QVBoxLayout" name="verticalLayout_12">
               <item>
-               <widget class="QCheckBox" name="checkEven">
-                <property name="text">
-                 <string>Gleichmäßige Verteilung</string>
+               <widget class="QGroupBox" name="groupEven">
+                <property name="maximumSize">
+                 <size>
+                  <width>16777215</width>
+                  <height>16777215</height>
+                 </size>
                 </property>
+                <property name="title">
+                 <string>Starpunktverteilung</string>
+                </property>
+                <layout class="QVBoxLayout" name="verticalLayout_14">
+                 <item>
+                  <widget class="QWidget" name="widget_16" native="true">
+                   <property name="maximumSize">
+                    <size>
+                     <width>16777215</width>
+                     <height>40</height>
+                    </size>
+                   </property>
+                   <layout class="QVBoxLayout" name="verticalLayout_13">
+                    <item>
+                     <widget class="QRadioButton" name="radioRandom">
+                      <property name="text">
+                       <string>Zufallsgeneriert</string>
+                      </property>
+                      <property name="checked">
+                       <bool>true</bool>
+                      </property>
+                     </widget>
+                    </item>
+                   </layout>
+                  </widget>
+                 </item>
+                 <item>
+                  <widget class="QWidget" name="widget_18" native="true">
+                   <property name="maximumSize">
+                    <size>
+                     <width>16777215</width>
+                     <height>42</height>
+                    </size>
+                   </property>
+                   <layout class="QHBoxLayout" name="horizontalLayout_8">
+                    <item>
+                     <widget class="QTextEdit" name="textNumberRandom">
+                      <property name="maximumSize">
+                       <size>
+                        <width>100</width>
+                        <height>30</height>
+                       </size>
+                      </property>
+                      <property name="inputMethodHints">
+                       <set>Qt::ImhDigitsOnly</set>
+                      </property>
+                      <property name="html">
+                       <string>&lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.0//EN&quot; &quot;http://www.w3.org/TR/REC-html40/strict.dtd&quot;&gt;
+&lt;html&gt;&lt;head&gt;&lt;meta name=&quot;qrichtext&quot; content=&quot;1&quot; /&gt;&lt;style type=&quot;text/css&quot;&gt;
+p, li { white-space: pre-wrap; }
+&lt;/style&gt;&lt;/head&gt;&lt;body style=&quot; font-family:'MS Shell Dlg 2'; font-size:8.25pt; font-weight:400; font-style:normal;&quot;&gt;
+&lt;p style=&quot;-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;br /&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+                      </property>
+                      <property name="placeholderText">
+                       <string>Anzahl Saatpunkte</string>
+                      </property>
+                     </widget>
+                    </item>
+                   </layout>
+                  </widget>
+                 </item>
+                 <item>
+                  <widget class="QWidget" name="widget_17" native="true">
+                   <property name="maximumSize">
+                    <size>
+                     <width>16777215</width>
+                     <height>40</height>
+                    </size>
+                   </property>
+                   <layout class="QHBoxLayout" name="horizontalLayout_7">
+                    <item>
+                     <widget class="QRadioButton" name="radioEven">
+                      <property name="enabled">
+                       <bool>true</bool>
+                      </property>
+                      <property name="text">
+                       <string>Gleichmäßig Verteilt</string>
+                      </property>
+                     </widget>
+                    </item>
+                   </layout>
+                  </widget>
+                 </item>
+                 <item>
+                  <widget class="QWidget" name="widget_19" native="true">
+                   <property name="maximumSize">
+                    <size>
+                     <width>16777215</width>
+                     <height>42</height>
+                    </size>
+                   </property>
+                   <layout class="QHBoxLayout" name="horizontalLayout_9">
+                    <item>
+                     <widget class="QTextEdit" name="textDistance">
+                      <property name="enabled">
+                       <bool>false</bool>
+                      </property>
+                      <property name="maximumSize">
+                       <size>
+                        <width>100</width>
+                        <height>30</height>
+                       </size>
+                      </property>
+                      <property name="inputMethodHints">
+                       <set>Qt::ImhDigitsOnly</set>
+                      </property>
+                      <property name="html">
+                       <string>&lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.0//EN&quot; &quot;http://www.w3.org/TR/REC-html40/strict.dtd&quot;&gt;
+&lt;html&gt;&lt;head&gt;&lt;meta name=&quot;qrichtext&quot; content=&quot;1&quot; /&gt;&lt;style type=&quot;text/css&quot;&gt;
+p, li { white-space: pre-wrap; }
+&lt;/style&gt;&lt;/head&gt;&lt;body style=&quot; font-family:'MS Shell Dlg 2'; font-size:8.25pt; font-weight:400; font-style:normal;&quot;&gt;
+&lt;p style=&quot;-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;br /&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+                      </property>
+                      <property name="placeholderText">
+                       <string>Abstand</string>
+                      </property>
+                     </widget>
+                    </item>
+                   </layout>
+                  </widget>
+                 </item>
+                </layout>
                </widget>
               </item>
              </layout>
+            </widget>
+           </item>
+           <item>
+            <widget class="QWidget" name="widget_15" native="true"/>
+           </item>
+          </layout>
+         </widget>
+        </item>
+        <item>
+         <widget class="QWidget" name="widget_4" native="true">
+          <property name="maximumSize">
+           <size>
+            <width>200</width>
+            <height>16777215</height>
+           </size>
+          </property>
+          <layout class="QVBoxLayout" name="verticalLayout_6">
+           <item>
+            <widget class="QWidget" name="widget_20" native="true">
+             <property name="maximumSize">
+              <size>
+               <width>16777215</width>
+               <height>22</height>
+              </size>
+             </property>
             </widget>
            </item>
            <item>
@@ -312,7 +457,7 @@ p, li { white-space: pre-wrap; }
             </widget>
            </item>
            <item>
-            <widget class="QWidget" name="widget_13" native="true">
+            <widget class="QWidget" name="widget_21" native="true">
              <property name="maximumSize">
               <size>
                <width>16777215</width>
@@ -341,7 +486,7 @@ p, li { white-space: pre-wrap; }
             </widget>
            </item>
            <item>
-            <widget class="QWidget" name="widget_14" native="true"/>
+            <widget class="QWidget" name="widget_13" native="true"/>
            </item>
           </layout>
          </widget>
@@ -357,7 +502,7 @@ p, li { white-space: pre-wrap; }
     <rect>
      <x>0</x>
      <y>0</y>
-     <width>1085</width>
+     <width>444</width>
      <height>21</height>
     </rect>
    </property>

@@ -26,6 +26,8 @@ class Vector2
 		const float x() const;
 		const float y() const;
 
+		const float cross(const Vector2 &other) const;
+
 
 		// VECTOR MATH
 

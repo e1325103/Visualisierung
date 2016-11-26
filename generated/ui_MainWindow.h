@@ -50,7 +50,7 @@ public:
     QWidget *widget_2;
     QVBoxLayout *verticalLayout_4;
     QWidget *widget_11;
-    QHBoxLayout *horizontalLayout_6;
+    QVBoxLayout *verticalLayout_15;
     QGroupBox *groupIntegration;
     QVBoxLayout *verticalLayout_10;
     QWidget *widget_3;
@@ -65,9 +65,26 @@ public:
     QWidget *widget_10;
     QHBoxLayout *horizontalLayout_5;
     QTextEdit *textDelta;
+    QWidget *widget_14;
+    QVBoxLayout *verticalLayout_12;
+    QGroupBox *groupEven;
+    QVBoxLayout *verticalLayout_14;
+    QWidget *widget_16;
+    QVBoxLayout *verticalLayout_13;
+    QRadioButton *radioRandom;
+    QWidget *widget_18;
+    QHBoxLayout *horizontalLayout_8;
+    QTextEdit *textNumberRandom;
+    QWidget *widget_17;
+    QHBoxLayout *horizontalLayout_7;
+    QRadioButton *radioEven;
+    QWidget *widget_19;
+    QHBoxLayout *horizontalLayout_9;
+    QTextEdit *textDistance;
+    QWidget *widget_15;
     QWidget *widget_4;
     QVBoxLayout *verticalLayout_6;
-    QCheckBox *checkEven;
+    QWidget *widget_20;
     QWidget *widget_5;
     QVBoxLayout *verticalLayout_7;
     QCheckBox *checkArrows;
@@ -77,11 +94,11 @@ public:
     QWidget *widget_7;
     QVBoxLayout *verticalLayout_9;
     QPushButton *buttonLic;
-    QWidget *widget_13;
+    QWidget *widget_21;
     QWidget *widget_12;
     QVBoxLayout *verticalLayout_11;
     QPushButton *buttonRedraw;
-    QWidget *widget_14;
+    QWidget *widget_13;
     QMenuBar *menubar;
     QMenu *menuFile;
 
@@ -89,7 +106,7 @@ public:
     {
         if (MainWindow->objectName().isEmpty())
             MainWindow->setObjectName(QStringLiteral("MainWindow"));
-        MainWindow->resize(1085, 731);
+        MainWindow->resize(444, 585);
         actionOpen = new QAction(MainWindow);
         actionOpen->setObjectName(QStringLiteral("actionOpen"));
         actionClose = new QAction(MainWindow);
@@ -150,12 +167,12 @@ public:
         verticalLayout_4->setObjectName(QStringLiteral("verticalLayout_4"));
         widget_11 = new QWidget(widget_2);
         widget_11->setObjectName(QStringLiteral("widget_11"));
-        widget_11->setMaximumSize(QSize(16777215, 220));
-        horizontalLayout_6 = new QHBoxLayout(widget_11);
-        horizontalLayout_6->setObjectName(QStringLiteral("horizontalLayout_6"));
+        widget_11->setMaximumSize(QSize(16777215, 225));
+        verticalLayout_15 = new QVBoxLayout(widget_11);
+        verticalLayout_15->setObjectName(QStringLiteral("verticalLayout_15"));
         groupIntegration = new QGroupBox(widget_11);
         groupIntegration->setObjectName(QStringLiteral("groupIntegration"));
-        groupIntegration->setMaximumSize(QSize(16777215, 200));
+        groupIntegration->setMaximumSize(QSize(16777215, 210));
         groupIntegration->setCheckable(false);
         groupIntegration->setChecked(false);
         verticalLayout_10 = new QVBoxLayout(groupIntegration);
@@ -189,7 +206,7 @@ public:
 
         widget_9 = new QWidget(groupIntegration);
         widget_9->setObjectName(QStringLiteral("widget_9"));
-        widget_9->setMaximumSize(QSize(16777215, 40));
+        widget_9->setMaximumSize(QSize(16777215, 42));
         horizontalLayout_4 = new QHBoxLayout(widget_9);
         horizontalLayout_4->setObjectName(QStringLiteral("horizontalLayout_4"));
         textSteps = new QTextEdit(widget_9);
@@ -204,7 +221,7 @@ public:
 
         widget_10 = new QWidget(groupIntegration);
         widget_10->setObjectName(QStringLiteral("widget_10"));
-        widget_10->setMaximumSize(QSize(16777215, 40));
+        widget_10->setMaximumSize(QSize(16777215, 42));
         horizontalLayout_5 = new QHBoxLayout(widget_10);
         horizontalLayout_5->setObjectName(QStringLiteral("horizontalLayout_5"));
         textDelta = new QTextEdit(widget_10);
@@ -216,31 +233,107 @@ public:
 
         verticalLayout_10->addWidget(widget_10);
 
-        widget_3->raise();
-        radioRunge->raise();
-        widget_8->raise();
-        widget_9->raise();
-        widget_10->raise();
 
-        horizontalLayout_6->addWidget(groupIntegration);
+        verticalLayout_15->addWidget(groupIntegration);
 
 
         verticalLayout_4->addWidget(widget_11);
 
-        widget_4 = new QWidget(widget_2);
+        widget_14 = new QWidget(widget_2);
+        widget_14->setObjectName(QStringLiteral("widget_14"));
+        widget_14->setMaximumSize(QSize(16777215, 250));
+        verticalLayout_12 = new QVBoxLayout(widget_14);
+        verticalLayout_12->setObjectName(QStringLiteral("verticalLayout_12"));
+        groupEven = new QGroupBox(widget_14);
+        groupEven->setObjectName(QStringLiteral("groupEven"));
+        groupEven->setMaximumSize(QSize(16777215, 16777215));
+        verticalLayout_14 = new QVBoxLayout(groupEven);
+        verticalLayout_14->setObjectName(QStringLiteral("verticalLayout_14"));
+        widget_16 = new QWidget(groupEven);
+        widget_16->setObjectName(QStringLiteral("widget_16"));
+        widget_16->setMaximumSize(QSize(16777215, 40));
+        verticalLayout_13 = new QVBoxLayout(widget_16);
+        verticalLayout_13->setObjectName(QStringLiteral("verticalLayout_13"));
+        radioRandom = new QRadioButton(widget_16);
+        radioRandom->setObjectName(QStringLiteral("radioRandom"));
+        radioRandom->setChecked(true);
+
+        verticalLayout_13->addWidget(radioRandom);
+
+
+        verticalLayout_14->addWidget(widget_16);
+
+        widget_18 = new QWidget(groupEven);
+        widget_18->setObjectName(QStringLiteral("widget_18"));
+        widget_18->setMaximumSize(QSize(16777215, 42));
+        horizontalLayout_8 = new QHBoxLayout(widget_18);
+        horizontalLayout_8->setObjectName(QStringLiteral("horizontalLayout_8"));
+        textNumberRandom = new QTextEdit(widget_18);
+        textNumberRandom->setObjectName(QStringLiteral("textNumberRandom"));
+        textNumberRandom->setMaximumSize(QSize(100, 30));
+        textNumberRandom->setInputMethodHints(Qt::ImhDigitsOnly);
+
+        horizontalLayout_8->addWidget(textNumberRandom);
+
+
+        verticalLayout_14->addWidget(widget_18);
+
+        widget_17 = new QWidget(groupEven);
+        widget_17->setObjectName(QStringLiteral("widget_17"));
+        widget_17->setMaximumSize(QSize(16777215, 40));
+        horizontalLayout_7 = new QHBoxLayout(widget_17);
+        horizontalLayout_7->setObjectName(QStringLiteral("horizontalLayout_7"));
+        radioEven = new QRadioButton(widget_17);
+        radioEven->setObjectName(QStringLiteral("radioEven"));
+        radioEven->setEnabled(true);
+
+        horizontalLayout_7->addWidget(radioEven);
+
+
+        verticalLayout_14->addWidget(widget_17);
+
+        widget_19 = new QWidget(groupEven);
+        widget_19->setObjectName(QStringLiteral("widget_19"));
+        widget_19->setMaximumSize(QSize(16777215, 42));
+        horizontalLayout_9 = new QHBoxLayout(widget_19);
+        horizontalLayout_9->setObjectName(QStringLiteral("horizontalLayout_9"));
+        textDistance = new QTextEdit(widget_19);
+        textDistance->setObjectName(QStringLiteral("textDistance"));
+        textDistance->setEnabled(false);
+        textDistance->setMaximumSize(QSize(100, 30));
+        textDistance->setInputMethodHints(Qt::ImhDigitsOnly);
+
+        horizontalLayout_9->addWidget(textDistance);
+
+
+        verticalLayout_14->addWidget(widget_19);
+
+
+        verticalLayout_12->addWidget(groupEven);
+
+
+        verticalLayout_4->addWidget(widget_14);
+
+        widget_15 = new QWidget(widget_2);
+        widget_15->setObjectName(QStringLiteral("widget_15"));
+
+        verticalLayout_4->addWidget(widget_15);
+
+
+        horizontalLayout->addWidget(widget_2);
+
+        widget_4 = new QWidget(centralwidget);
         widget_4->setObjectName(QStringLiteral("widget_4"));
-        widget_4->setMaximumSize(QSize(16777215, 40));
+        widget_4->setMaximumSize(QSize(200, 16777215));
         verticalLayout_6 = new QVBoxLayout(widget_4);
         verticalLayout_6->setObjectName(QStringLiteral("verticalLayout_6"));
-        checkEven = new QCheckBox(widget_4);
-        checkEven->setObjectName(QStringLiteral("checkEven"));
+        widget_20 = new QWidget(widget_4);
+        widget_20->setObjectName(QStringLiteral("widget_20"));
+        widget_20->setMaximumSize(QSize(16777215, 22));
 
-        verticalLayout_6->addWidget(checkEven);
+        verticalLayout_6->addWidget(widget_20);
 
-
-        verticalLayout_4->addWidget(widget_4);
-
-        widget_5 = new QWidget(widget_2);
+        widget_5 = new QWidget(widget_4);
         widget_5->setObjectName(QStringLiteral("widget_5"));
         widget_5->setMaximumSize(QSize(16777215, 40));
         verticalLayout_7 = new QVBoxLayout(widget_5);
@@ -251,9 +344,9 @@ public:
         verticalLayout_7->addWidget(checkArrows);
 
 
-        verticalLayout_4->addWidget(widget_5);
+        verticalLayout_6->addWidget(widget_5);
 
-        widget_6 = new QWidget(widget_2);
+        widget_6 = new QWidget(widget_4);
         widget_6->setObjectName(QStringLiteral("widget_6"));
         widget_6->setMaximumSize(QSize(16777215, 40));
         verticalLayout_8 = new QVBoxLayout(widget_6);
@@ -264,9 +357,9 @@ public:
         verticalLayout_8->addWidget(checkColour);
 
 
-        verticalLayout_4->addWidget(widget_6);
+        verticalLayout_6->addWidget(widget_6);
 
-        widget_7 = new QWidget(widget_2);
+        widget_7 = new QWidget(widget_4);
         widget_7->setObjectName(QStringLiteral("widget_7"));
         widget_7->setMaximumSize(QSize(16777215, 40));
         verticalLayout_9 = new QVBoxLayout(widget_7);
@@ -277,15 +370,15 @@ public:
         verticalLayout_9->addWidget(buttonLic);
 
 
-        verticalLayout_4->addWidget(widget_7);
+        verticalLayout_6->addWidget(widget_7);
 
-        widget_13 = new QWidget(widget_2);
-        widget_13->setObjectName(QStringLiteral("widget_13"));
-        widget_13->setMaximumSize(QSize(16777215, 40));
+        widget_21 = new QWidget(widget_4);
+        widget_21->setObjectName(QStringLiteral("widget_21"));
+        widget_21->setMaximumSize(QSize(16777215, 40));
 
-        verticalLayout_4->addWidget(widget_13);
+        verticalLayout_6->addWidget(widget_21);
 
-        widget_12 = new QWidget(widget_2);
+        widget_12 = new QWidget(widget_4);
         widget_12->setObjectName(QStringLiteral("widget_12"));
         widget_12->setMaximumSize(QSize(16777215, 40));
         verticalLayout_11 = new QVBoxLayout(widget_12);
@@ -296,15 +389,15 @@ public:
         verticalLayout_11->addWidget(buttonRedraw);
 
 
-        verticalLayout_4->addWidget(widget_12);
+        verticalLayout_6->addWidget(widget_12);
 
-        widget_14 = new QWidget(widget_2);
-        widget_14->setObjectName(QStringLiteral("widget_14"));
+        widget_13 = new QWidget(widget_4);
+        widget_13->setObjectName(QStringLiteral("widget_13"));
 
-        verticalLayout_4->addWidget(widget_14);
+        verticalLayout_6->addWidget(widget_13);
 
 
-        horizontalLayout->addWidget(widget_2);
+        horizontalLayout->addWidget(widget_4);
 
 
         verticalLayout->addLayout(horizontalLayout);
@@ -315,7 +408,7 @@ public:
         MainWindow->setCentralWidget(centralwidget);
         menubar = new QMenuBar(MainWindow);
         menubar->setObjectName(QStringLiteral("menubar"));
-        menubar->setGeometry(QRect(0, 0, 1085, 21));
+        menubar->setGeometry(QRect(0, 0, 444, 21));
         menuFile = new QMenu(menubar);
         menuFile->setObjectName(QStringLiteral("menuFile"));
         MainWindow->setMenuBar(menubar);
@@ -350,7 +443,21 @@ public:
 "<p style=\"-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><br /></p></body></html>", 0));
         textSteps->setPlaceholderText(QApplication::translate("MainWindow", "Anzahl Schritte", 0));
         textDelta->setPlaceholderText(QApplication::translate("MainWindow", "Delta", 0));
-        checkEven->setText(QApplication::translate("MainWindow", "Gleichm\303\244\303\237ige Verteilung", 0));
+        groupEven->setTitle(QApplication::translate("MainWindow", "Starpunktverteilung", 0));
+        radioRandom->setText(QApplication::translate("MainWindow", "Zufallsgeneriert", 0));
+        textNumberRandom->setHtml(QApplication::translate("MainWindow", "<!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 4.0//EN\" \"http://www.w3.org/TR/REC-html40/strict.dtd\">\n"
+"<html><head><meta name=\"qrichtext\" content=\"1\" /><style type=\"text/css\">\n"
+"p, li { white-space: pre-wrap; }\n"
+"</style></head><body style=\" font-family:'MS Shell Dlg 2'; font-size:8.25pt; font-weight:400; font-style:normal;\">\n"
+"<p style=\"-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><br /></p></body></html>", 0));
+        textNumberRandom->setPlaceholderText(QApplication::translate("MainWindow", "Anzahl Saatpunkte", 0));
+        radioEven->setText(QApplication::translate("MainWindow", "Gleichm\303\244\303\237ig Verteilt", 0));
+        textDistance->setHtml(QApplication::translate("MainWindow", "<!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 4.0//EN\" \"http://www.w3.org/TR/REC-html40/strict.dtd\">\n"
+"<html><head><meta name=\"qrichtext\" content=\"1\" /><style type=\"text/css\">\n"
+"p, li { white-space: pre-wrap; }\n"
+"</style></head><body style=\" font-family:'MS Shell Dlg 2'; font-size:8.25pt; font-weight:400; font-style:normal;\">\n"
+"<p style=\"-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><br /></p></body></html>", 0));
+        textDistance->setPlaceholderText(QApplication::translate("MainWindow", "Abstand", 0));
         checkArrows->setText(QApplication::translate("MainWindow", "Pfeile", 0));
         checkColour->setText(QApplication::translate("MainWindow", "Farben", 0));
         buttonLic->setText(QApplication::translate("MainWindow", "Linear Intergral Convolution", 0));

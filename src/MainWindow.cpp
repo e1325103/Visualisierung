@@ -21,6 +21,9 @@ MainWindow::MainWindow(QWidget *parent)
 	connect(m_Ui->radioEuler, SIGNAL(clicked()), this, SLOT(eulerRadioClicked()));
 	connect(m_Ui->radioRunge, SIGNAL(clicked()), this, SLOT(eulerRungeClicked()));
 
+	connect(m_Ui->radioRandom, SIGNAL(clicked()), this, SLOT(radioRandomClicked()));
+	connect(m_Ui->radioEven, SIGNAL(clicked()), this, SLOT(radioEvenClicked()));
+
 	setCheckable(false);
 }
 
@@ -113,10 +116,28 @@ void MainWindow::openFileAction()
 	}
 }
 
+void MainWindow::radioRandomClicked() {
+
+	m_Ui->radioRandom->setChecked(true);
+	m_Ui->radioEven->setChecked(false);
+
+	m_Ui->textNumberRandom->setEnabled(true);
+	m_Ui->textDistance->setEnabled(false);
+}
+
+void MainWindow::radioEvenClicked() {
+	m_Ui->radioRandom->setChecked(false);
+	m_Ui->radioEven->setChecked(true);
+
+	m_Ui->textNumberRandom->setEnabled(false);
+	m_Ui->textDistance->setEnabled(true);
+}
+
 void MainWindow::setCheckable(bool checkable) {
 
 	m_Ui->groupIntegration->setEnabled(checkable);
-
+	m_Ui->groupEven->setEnabled(checkable);
+		
 	m_Ui->buttonLic->setEnabled(checkable);
 	m_Ui->buttonRedraw->setEnabled(checkable);
 
@@ -141,13 +162,20 @@ void MainWindow::buttonRedrawClicked() {
 	setCheckable(false);	
 
 	if (m_Ui->radioEuler->isChecked()) {
-		if (!m_Ui->checkEven->isChecked()){
+		if (m_Ui->radioEven->isChecked()){
+			integrator = new EulerIntegrator(vectorField, new EvenSpacedSeedGenerator(vectorField->width(), vectorField->height(), m_Ui->textDistance->toPlainText().toInt(), 2.0, 0.5), 1.0f / m_Ui->textDelta->toPlainText().toFloat(), m_Ui->textSteps->toPlainText().toInt());
+		}
+		else {
 			integrator = new EulerIntegrator(vectorField, new RandomSeedGenerator(vectorField->width(), vectorField->height(), 25), 1.0f / m_Ui->textDelta->toPlainText().toFloat(), m_Ui->textSteps->toPlainText().toInt());
 		}
 	}
-	else {
-		if (!m_Ui->checkEven->isChecked()){
-			integrator = new RungeKuttaIntegrator(vectorField, new RandomSeedGenerator(vectorField->width(), vectorField->height(), 25), 1.0f / m_Ui->textDelta->toPlainText().toFloat(), m_Ui->textSteps->toPlainText().toInt());
+	else {	
+
+		if (m_Ui->radioEven->isChecked()){
+			integrator = new RungeKuttaIntegrator(vectorField, new EvenSpacedSeedGenerator(vectorField->width(), vectorField->height(), m_Ui->textDistance->toPlainText().toInt(), 2.0, 0.5), m_Ui->textDelta->toPlainText().toInt(), m_Ui->textSteps->toPlainText().toInt());
+		}
+		else {
+			integrator = new RungeKuttaIntegrator(vectorField, new RandomSeedGenerator(vectorField->width(), vectorField->height(), 25), m_Ui->textDelta->toPlainText().toInt(), m_Ui->textSteps->toPlainText().toInt());
 		}
 	}
 

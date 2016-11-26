@@ -3,9 +3,11 @@
 #include "VectorField.h"
 #include "Vector.h"
 
+#include <math.h>
 #include <cfloat>
 #include <QPainter>
 #include <QPaintEvent>
+#include <QVector>
 
 class Integrator
 {
@@ -28,4 +30,8 @@ protected:
 
 	void paintBackgroundParameter(QPainter* painter, int parameter, Vector3 color1, Vector3 color2);
 	void paintLines(QPainter* painter, int width, Vector3 color);
+	void paintArrows(QPainter* painter, int distance, int width, int height);
+
+private:
+	QVector2D multiplyWithMatrix(QMatrix matrix, QVector2D vector);
 };

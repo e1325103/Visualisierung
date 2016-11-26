@@ -11,6 +11,7 @@
 #include "Window.h"
 #include "RandomSeedGenerator.h"
 #include "EulerIntegrator.h"
+#include "EvenSpacedSeedGenerator.h"
 #include "VectorField.h"
 #include "Integrator.h"
 #include "Widget.h"
@@ -41,6 +42,8 @@ public:
 	void								eulerRadioClicked();
 	void								eulerRungeClicked();
 	void								buttonRedrawClicked();
+	void								radioRandomClicked();
+	void								radioEvenClicked();
 
 
 private:

@@ -13,8 +13,92 @@ QPixmap Integrator::paint() {
 
 	paintLines(painter, 3, Vector3(255, 255, 255));
 
+	paintArrows(painter, 20, vectorField->width(), vectorField->height());
+
 	delete painter;
 	return pix;
+}
+
+void Integrator::paintArrows(QPainter* painter, int distance, int width, int height) {
+
+	QPen pen;
+	pen.setColor(QColor(0, 0, 0));
+	pen.setWidth(2);
+	
+	int x1, x2, x3;
+	int y1, y2, y3;
+	
+
+	QVector2D vec1 = QVector2D(0, 0);
+	QVector2D vec2 = QVector2D(4, 12);
+	QVector2D vec3 = QVector2D(-4, 12);
+
+	Vector3 vecDirection;
+	QVector2D direction;
+
+	QMatrix rotationMatrix = QMatrix();
+
+
+	for (int x = distance; x < width; x += distance) {
+		for (int y = distance; y < height; y += distance) {
+			painter->setPen(pen);
+
+			
+			vecDirection = interpolateBilinear(x, y);
+			
+
+
+			Vector2 up = Vector2(0, 1);
+			Vector3 vecTemp = interpolateBilinear(x, y);
+			vecTemp.normaliseXY();
+
+			Vector2 vec = Vector2(vecTemp.x(), vecTemp.y());
+
+			/*vec = (vec + Vector3(1, 1, 0)) / 2;
+			float val = 180.0f * vec.x() + 180.0f * vec.y();
+			float valRadians = val * (3.1415926 / 180);*/
+
+			float angle = up.cross(vec);
+			angle = acos(angle);
+			//float angleRadians = angle * (3.1415926 / 180);
+
+			float angleRadians = angle;
+
+			rotationMatrix = QMatrix(cos(angleRadians), -sin(angleRadians), sin(angleRadians), cos(angleRadians), 0, 0);
+
+			QVector2D currentVec1 = multiplyWithMatrix(rotationMatrix, vec1);
+			QVector2D currentVec2 = multiplyWithMatrix(rotationMatrix, vec2);
+			QVector2D currentVec3 = multiplyWithMatrix(rotationMatrix, vec3);
+
+
+			currentVec1 = currentVec1 * vecTemp.magnitudeXY() + QVector2D(x, y);
+			currentVec2 = currentVec2 * vecTemp.magnitudeXY() + QVector2D(x, y);
+			currentVec3 = currentVec3 * vecTemp.magnitudeXY() + QVector2D(x, y);
+
+			/*x1 = x;
+			y1 = y;
+
+			x2 = x1 + 4;
+			y2 = y1 + 8;
+
+			x3 = x1 - 4;
+			y3 = y1 + 8;
+
+
+			currentVec1 = */
+
+
+			painter->drawLine(currentVec1.x(), currentVec1.y(), currentVec2.x(), currentVec2.y());
+			painter->drawLine(currentVec2.x(), currentVec2.y(), currentVec3.x(), currentVec3.y());
+			painter->drawLine(currentVec3.x(), currentVec3.y(), currentVec1.x(), currentVec1.y());
+		}
+	}
+
+	
+}
+
+QVector2D Integrator::multiplyWithMatrix(QMatrix matrix, QVector2D vector) {
+	return QVector2D(matrix.m11() * vector.x() + matrix.m12() * vector.y(), matrix.m21() * vector.x() + matrix.m22() * vector.y());
 }
 
 void Integrator::paintLines(QPainter* painter, int width, Vector3 color) {
