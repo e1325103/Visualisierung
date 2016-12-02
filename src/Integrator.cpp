@@ -9,26 +9,39 @@ QPixmap Integrator::paint() {
 
 	painter->fillRect(0, 0, vectorField->width(), vectorField->height(), QBrush(QColor(255, 255, 255)));
 
-	paintBackgroundParameter(painter, 0, Vector3(255, 0, 0), Vector3(0, 0, 255));
+	if (colour != 10) {
+		paintBackgroundParameter(painter, colour, Vector3(255, 0, 0), Vector3(0, 0, 255));
+	}
 
-	paintLines(painter, 3, Vector3(255, 255, 255));
 
-	paintArrows(painter, 20, vectorField->width(), vectorField->height());
+	int lineColour = 255;
+
+	if (colour == 10) {
+		lineColour = 0;
+	}
+
+	paintLines(painter, 3, Vector3(lineColour, lineColour, lineColour));
+
+
+	if (arrows) {
+		paintArrows(painter, 20, vectorField->width(), vectorField->height(), lineColour);
+	}
 
 	delete painter;
 	return pix;
 }
 
-void Integrator::paintArrows(QPainter* painter, int distance, int width, int height) {
+void Integrator::paintArrows(QPainter* painter, int distance, int width, int height, int lineColour) {
 
 	QPen pen;
 	pen.setColor(QColor(0, 0, 0));
 	pen.setWidth(2);
-	
-	int x1, x2, x3;
-	int y1, y2, y3;
-	
 
+	if (lineColour == 0) {
+		pen.setColor(QColor(255, 102, 0));
+	}
+	
+	
 	QVector2D vec1 = QVector2D(0, 0);
 	QVector2D vec2 = QVector2D(4, 12);
 	QVector2D vec3 = QVector2D(-4, 12);
@@ -52,17 +65,10 @@ void Integrator::paintArrows(QPainter* painter, int distance, int width, int hei
 			Vector3 vecTemp = interpolateBilinear(x, y);
 			vecTemp.normaliseXY();
 
-			Vector2 vec = Vector2(vecTemp.x(), vecTemp.y());
+			Vector2 vec = Vector2(vecTemp.x(), vecTemp.y());		
+			
 
-			/*vec = (vec + Vector3(1, 1, 0)) / 2;
-			float val = 180.0f * vec.x() + 180.0f * vec.y();
-			float valRadians = val * (3.1415926 / 180);*/
-
-			float angle = up.cross(vec);
-			angle = acos(angle);
-			//float angleRadians = angle * (3.1415926 / 180);
-
-			float angleRadians = angle;
+			float angleRadians = atan2(up.cross(vec), up.dot(vec));// +3.1415926;
 
 			rotationMatrix = QMatrix(cos(angleRadians), -sin(angleRadians), sin(angleRadians), cos(angleRadians), 0, 0);
 
@@ -149,21 +155,21 @@ void Integrator::paintBackgroundParameter(QPainter* painter, int parameter, Vect
 	pen.setWidth(1);
 	for (int x = 0; x < vectorField->width(); x++) {
 		for (int y = 0; y < vectorField->height(); y++) {
-			/*float val = interpolateBilinear(x, y, parameter).z();
+			float val = interpolateBilinear(x, y, parameter).z();
 			val = (val - minParameter) * (1.0f / (maxParameter - minParameter));
 			Vector3 mixColor = color1 * val + color2 * (1.0f - val);
 			pen.setColor(QColor((int)mixColor.x(), (int)mixColor.y(), (int)mixColor.z()));
 			painter->setPen(pen);
-			painter->drawPoint(QPoint(x, y));*/
+			painter->drawPoint(QPoint(x, y));
 
-			Vector3 vec = interpolateBilinear(x, y);
+			/*Vector3 vec = interpolateBilinear(x, y);
 			vec.normaliseXY();
 			vec = (vec + Vector3(1, 1, 0)) / 2;
 			float val = 127.5f * vec.x() + 127.5f * vec.y();
 			QColor color = QColor::fromHsv(val, 255, 255);
 			pen.setColor(color);
 			painter->setPen(pen);
-			painter->drawPoint(QPoint(x, y));
+			painter->drawPoint(QPoint(x, y));*/
 		}
 	}
 }

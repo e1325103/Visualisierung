@@ -24,6 +24,9 @@ MainWindow::MainWindow(QWidget *parent)
 	connect(m_Ui->radioRandom, SIGNAL(clicked()), this, SLOT(radioRandomClicked()));
 	connect(m_Ui->radioEven, SIGNAL(clicked()), this, SLOT(radioEvenClicked()));
 
+	connect(m_Ui->radioColourOne, SIGNAL(clicked()), this, SLOT(radioColourOneClicked()));
+	connect(m_Ui->radioColourTwo, SIGNAL(clicked()), this, SLOT(radioColourTwoClicked()));
+
 	setCheckable(false);
 }
 
@@ -100,7 +103,7 @@ void MainWindow::openFileAction()
 
 				vectorField = m_VectorField;
 
-				integrator = new EulerIntegrator(vectorField, new RandomSeedGenerator(vectorField->width(), vectorField->height(), 25), 1.0f / 1.0f, 1600);
+				integrator = new EulerIntegrator(vectorField, new RandomSeedGenerator(vectorField->width(), vectorField->height(), 25), 1.0f / 1.0f, 1600, 0, false);
 				integrator->simulate();	
 
 				m_Ui->drawLabel->setPixmap(integrator->paint());
@@ -115,6 +118,18 @@ void MainWindow::openFileAction()
 		}
 	}
 }
+
+
+void MainWindow::radioColourOneClicked() {
+	m_Ui->radioColourOne->setChecked(true);
+	m_Ui->radioColourTwo->setChecked(false);
+}
+
+void MainWindow::radioColourTwoClicked() {
+	m_Ui->radioColourOne->setChecked(false);
+	m_Ui->radioColourTwo->setChecked(true);
+}
+
 
 void MainWindow::radioRandomClicked() {
 
@@ -137,9 +152,12 @@ void MainWindow::setCheckable(bool checkable) {
 
 	m_Ui->groupIntegration->setEnabled(checkable);
 	m_Ui->groupEven->setEnabled(checkable);
+	m_Ui->groupBoxColour->setEnabled(checkable);
 		
 	m_Ui->buttonLic->setEnabled(checkable);
 	m_Ui->buttonRedraw->setEnabled(checkable);
+
+	m_Ui->checkArrows->setEnabled(checkable);
 
 	m_Ui->widget_2->repaint();
 }
@@ -161,21 +179,32 @@ void MainWindow::buttonRedrawClicked() {
 
 	setCheckable(false);	
 
-	if (m_Ui->radioEuler->isChecked()) {
-		if (m_Ui->radioEven->isChecked()){
-			integrator = new EulerIntegrator(vectorField, new EvenSpacedSeedGenerator(vectorField->width(), vectorField->height(), m_Ui->textDistance->toPlainText().toInt(), 2.0, 0.5), 1.0f / m_Ui->textDelta->toPlainText().toFloat(), m_Ui->textSteps->toPlainText().toInt());
+	int colour = 10;
+
+	if (m_Ui->groupBoxColour->isChecked()) {
+		if (m_Ui->radioColourOne->isChecked()) {
+			colour = 0;
 		}
 		else {
-			integrator = new EulerIntegrator(vectorField, new RandomSeedGenerator(vectorField->width(), vectorField->height(), 25), 1.0f / m_Ui->textDelta->toPlainText().toFloat(), m_Ui->textSteps->toPlainText().toInt());
+			colour = 1;
+		}
+	}
+
+	if (m_Ui->radioEuler->isChecked()) {
+		if (m_Ui->radioEven->isChecked()){
+			integrator = new EulerIntegrator(vectorField, new EvenSpacedSeedGenerator(vectorField->width(), vectorField->height(), m_Ui->textDistance->toPlainText().toInt(), 2.0, 0.5), 1.0f / m_Ui->textDelta->toPlainText().toFloat(), m_Ui->textSteps->toPlainText().toInt(), colour, m_Ui->checkArrows->isChecked());
+		}
+		else {
+			integrator = new EulerIntegrator(vectorField, new RandomSeedGenerator(vectorField->width(), vectorField->height(), 25), 1.0f / m_Ui->textDelta->toPlainText().toFloat(), m_Ui->textSteps->toPlainText().toInt(), colour, m_Ui->checkArrows->isChecked());
 		}
 	}
 	else {	
 
 		if (m_Ui->radioEven->isChecked()){
-			integrator = new RungeKuttaIntegrator(vectorField, new EvenSpacedSeedGenerator(vectorField->width(), vectorField->height(), m_Ui->textDistance->toPlainText().toInt(), 2.0, 0.5), m_Ui->textDelta->toPlainText().toInt(), m_Ui->textSteps->toPlainText().toInt());
+			integrator = new RungeKuttaIntegrator(vectorField, new EvenSpacedSeedGenerator(vectorField->width(), vectorField->height(), m_Ui->textDistance->toPlainText().toInt(), 2.0, 0.5), m_Ui->textDelta->toPlainText().toInt(), m_Ui->textSteps->toPlainText().toInt(), colour, m_Ui->checkArrows->isChecked());
 		}
 		else {
-			integrator = new RungeKuttaIntegrator(vectorField, new RandomSeedGenerator(vectorField->width(), vectorField->height(), 25), m_Ui->textDelta->toPlainText().toInt(), m_Ui->textSteps->toPlainText().toInt());
+			integrator = new RungeKuttaIntegrator(vectorField, new RandomSeedGenerator(vectorField->width(), vectorField->height(), 25), m_Ui->textDelta->toPlainText().toInt(), m_Ui->textSteps->toPlainText().toInt(), colour, m_Ui->checkArrows->isChecked());
 		}
 	}
 

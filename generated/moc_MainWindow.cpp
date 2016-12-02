@@ -19,8 +19,8 @@
 
 QT_BEGIN_MOC_NAMESPACE
 struct qt_meta_stringdata_MainWindow_t {
-    QByteArrayData data[10];
-    char stringdata0[148];
+    QByteArrayData data[12];
+    char stringdata0[192];
 };
 #define QT_MOC_LITERAL(idx, ofs, len) \
     Q_STATIC_BYTE_ARRAY_DATA_HEADER_INITIALIZER_WITH_OFFSET(len, \
@@ -38,13 +38,16 @@ QT_MOC_LITERAL(5, 56, 17), // "eulerRadioClicked"
 QT_MOC_LITERAL(6, 74, 17), // "eulerRungeClicked"
 QT_MOC_LITERAL(7, 92, 19), // "buttonRedrawClicked"
 QT_MOC_LITERAL(8, 112, 18), // "radioRandomClicked"
-QT_MOC_LITERAL(9, 131, 16) // "radioEvenClicked"
+QT_MOC_LITERAL(9, 131, 16), // "radioEvenClicked"
+QT_MOC_LITERAL(10, 148, 21), // "radioColourOneClicked"
+QT_MOC_LITERAL(11, 170, 21) // "radioColourTwoClicked"
 
     },
     "MainWindow\0openFileAction\0\0closeAction\0"
     "licButtonClicked\0eulerRadioClicked\0"
     "eulerRungeClicked\0buttonRedrawClicked\0"
-    "radioRandomClicked\0radioEvenClicked"
+    "radioRandomClicked\0radioEvenClicked\0"
+    "radioColourOneClicked\0radioColourTwoClicked"
 };
 #undef QT_MOC_LITERAL
 
@@ -54,7 +57,7 @@ static const uint qt_meta_data_MainWindow[] = {
        7,       // revision
        0,       // classname
        0,    0, // classinfo
-       8,   14, // methods
+      10,   14, // methods
        0,    0, // properties
        0,    0, // enums/sets
        0,    0, // constructors
@@ -62,16 +65,20 @@ static const uint qt_meta_data_MainWindow[] = {
        0,       // signalCount
 
  // slots: name, argc, parameters, tag, flags
-       1,    0,   54,    2, 0x09 /* Protected */,
-       3,    0,   55,    2, 0x09 /* Protected */,
-       4,    0,   56,    2, 0x09 /* Protected */,
-       5,    0,   57,    2, 0x09 /* Protected */,
-       6,    0,   58,    2, 0x09 /* Protected */,
-       7,    0,   59,    2, 0x09 /* Protected */,
-       8,    0,   60,    2, 0x09 /* Protected */,
-       9,    0,   61,    2, 0x09 /* Protected */,
+       1,    0,   64,    2, 0x09 /* Protected */,
+       3,    0,   65,    2, 0x09 /* Protected */,
+       4,    0,   66,    2, 0x09 /* Protected */,
+       5,    0,   67,    2, 0x09 /* Protected */,
+       6,    0,   68,    2, 0x09 /* Protected */,
+       7,    0,   69,    2, 0x09 /* Protected */,
+       8,    0,   70,    2, 0x09 /* Protected */,
+       9,    0,   71,    2, 0x09 /* Protected */,
+      10,    0,   72,    2, 0x09 /* Protected */,
+      11,    0,   73,    2, 0x09 /* Protected */,
 
  // slots: parameters
+    QMetaType::Void,
+    QMetaType::Void,
     QMetaType::Void,
     QMetaType::Void,
     QMetaType::Void,
@@ -98,6 +105,8 @@ void MainWindow::qt_static_metacall(QObject *_o, QMetaObject::Call _c, int _id, 
         case 5: _t->buttonRedrawClicked(); break;
         case 6: _t->radioRandomClicked(); break;
         case 7: _t->radioEvenClicked(); break;
+        case 8: _t->radioColourOneClicked(); break;
+        case 9: _t->radioColourTwoClicked(); break;
         default: ;
         }
     }
@@ -129,13 +138,13 @@ int MainWindow::qt_metacall(QMetaObject::Call _c, int _id, void **_a)
     if (_id < 0)
         return _id;
     if (_c == QMetaObject::InvokeMetaMethod) {
-        if (_id < 8)
+        if (_id < 10)
             qt_static_metacall(this, _c, _id, _a);
-        _id -= 8;
+        _id -= 10;
     } else if (_c == QMetaObject::RegisterMethodArgumentMetaType) {
-        if (_id < 8)
+        if (_id < 10)
             *reinterpret_cast<int*>(_a[0]) = -1;
-        _id -= 8;
+        _id -= 10;
     }
     return _id;
 }

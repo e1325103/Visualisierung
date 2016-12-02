@@ -44,6 +44,8 @@ public:
 	void								buttonRedrawClicked();
 	void								radioRandomClicked();
 	void								radioEvenClicked();
+	void								radioColourOneClicked();
+	void								radioColourTwoClicked();
 
 
 private:
