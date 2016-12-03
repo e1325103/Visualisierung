@@ -29,6 +29,7 @@ public:
 	const Parameter&				parameter(const int i) const;
 	const Parameter&				parameter(const int x, const int y) const;
 	const Parameter*				parameters() const;
+	void							setParameter(const int x, const int y, const int index, const float value);
 
 	const int						width() const;
 	const int						height() const;
