@@ -146,6 +146,7 @@
     <ClCompile Include="src\EulerIntegrator.cpp" />
     <ClCompile Include="src\EvenSpacedSeedGenerator.cpp" />
     <ClCompile Include="src\Integrator.cpp" />
+    <ClCompile Include="src\Lic.cpp" />
     <ClCompile Include="src\Main.cpp" />
     <ClCompile Include="src\MainWindow.cpp" />
     <ClCompile Include="src\MultiSet.cpp" />
@@ -187,6 +188,7 @@
     <ClInclude Include="src\EulerIntegrator.h" />
     <ClInclude Include="src\EvenSpacedSeedGenerator.h" />
     <ClInclude Include="src\Integrator.h" />
+    <ClInclude Include="src\LIC.h" />
     <ClInclude Include="src\MultiSet.h" />
     <ClInclude Include="src\RandomSeedGenerator.h" />
     <ClInclude Include="src\RungeKuttaIntegrator.h" />
