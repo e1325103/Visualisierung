@@ -15,6 +15,7 @@
 #include "VectorField.h"
 #include "Integrator.h"
 #include "Widget.h"
+#include "LIC.h"
 
 
 #include <QMainWindow>

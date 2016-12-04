@@ -10,7 +10,13 @@ QPixmap Integrator::paint() {
 	painter->fillRect(0, 0, vectorField->width(), vectorField->height(), QBrush(QColor(255, 255, 255)));
 
 	if (colour != 10) {
-		paintBackgroundParameter(painter, colour, Vector3(255, 0, 0), Vector3(0, 0, 255));
+
+		if (colour == 2) {
+			paintBackgroundParameter(painter, colour, Vector3(0, 0, 0), Vector3(255, 255, 255));
+		}
+		else {
+			paintBackgroundParameter(painter, colour, Vector3(255, 0, 0), Vector3(0, 0, 255));
+		}
 	}
 
 

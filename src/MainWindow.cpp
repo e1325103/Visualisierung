@@ -217,7 +217,15 @@ void MainWindow::buttonRedrawClicked() {
 
 
 void MainWindow::licButtonClicked() {
-	std::cout << "Button Clicked" << std::endl;
+	setCheckable(false);
+
+	integrator = new LIC(vectorField, nullptr, m_Ui->textDelta->toPlainText().toInt(), 0, 2, false, 6);
+		
+	integrator->simulate();
+
+	m_Ui->drawLabel->setPixmap(integrator->paint());
+
+	setCheckable(true);
 }
 
 

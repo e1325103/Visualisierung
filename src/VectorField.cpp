@@ -53,10 +53,17 @@ const VectorField::Parameter* VectorField::parameters() const
 void VectorField::setParameter(const int x, const int y, const int index, const float value)
 {
 	Parameter parameter = this->parameter(x, y);
+
+
 	if (index >= parameter.size()) {
 		parameter.resize(index + 1, 0.0f);
 	}
 	parameter[index] = value;
+
+	if (swapped) {
+		m_Parameters[y + x*m_Height] = parameter;
+	}
+	m_Parameters[x + y*m_Width] = parameter;
 }
 
 const int VectorField::width() const
