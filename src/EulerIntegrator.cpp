@@ -6,7 +6,7 @@ void EulerIntegrator::simulate() {
 	seedGenerator->start();
 	while (!seedGenerator->isFinished()) {
 
-		Vector2 startPoint = seedGenerator->getNextPoint();
+		Vector3 startPoint = seedGenerator->getNextPoint();
 		float x = (float)startPoint.x();
 		float y = (float)startPoint.y();
 
@@ -15,8 +15,8 @@ void EulerIntegrator::simulate() {
 		int lastY = -1;
 		bool outside = false;
 		for (int j = 0; j < steps && !outside; j++) {
-			Vector2 v = vectorField->vector((int)x, (int)y); //gg
-			//v.normalise();
+			Vector3 v = Integrator::interpolateBilinear(x, y); //gg
+			v.normaliseXY();
 			x = x + v.x() * delta;
 			y = y + v.y() * delta;
 			if (((int)x != lastX) && ((int)y != lastY)) {

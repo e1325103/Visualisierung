@@ -6,18 +6,11 @@ void RungeKuttaIntegrator::simulate() {
 
 	seedGenerator->start();
 
-	bool swapped = false;
-	Vector2 startPoint;
-
-	while (swapped || !seedGenerator->isFinished()) {
-		if (!swapped) {
-			startPoint  = seedGenerator->getNextPoint();
-		}
-		else {
-			delta *= -1.0f;
-		}
+	while (!seedGenerator->isFinished()) {
+		Vector3 startPoint = seedGenerator->getNextPoint();
 		float x = (float)startPoint.x();
 		float y = (float)startPoint.y();
+		float direction = (float)startPoint.z();
 
 		std::list<Vector3> points;
 		int lastX = -1;
@@ -30,8 +23,8 @@ void RungeKuttaIntegrator::simulate() {
 			Vector3 tempV = Integrator::interpolateBilinear(x, y);
 			tempV.normaliseXY();
 
-			float tempX = x + tempV.x() * delta / 2.0f;
-			float tempY = y + tempV.y() * delta / 2.0f;
+			float tempX = x + tempV.x() * delta / 2.0f * direction;
+			float tempY = y + tempV.y() * delta / 2.0f * direction;
 
 			outside = tempX < 0 || tempY < 0 || ((int)tempX + 1) >= vectorField->width() || ((int)tempY + 1) >= vectorField->height();
 
