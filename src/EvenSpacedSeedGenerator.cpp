@@ -20,7 +20,15 @@ EvenSpacedSeedGenerator::~EvenSpacedSeedGenerator()
 
 }
 
-Vector2 EvenSpacedSeedGenerator::getNextPoint() {
+Vector3 EvenSpacedSeedGenerator::getNextPoint() {
+	if (direction > 0.0f) {
+		direction = -1.0f;
+		return Vector3(lastPoint, direction);
+	}
+	else {
+		direction = 1.0f;
+	}
+
 	if (buildLine->size() > 0) {
 		lines.push(buildLine);
 		for (Vector2 point : *buildLine) {
@@ -84,7 +92,8 @@ Vector2 EvenSpacedSeedGenerator::getNextPoint() {
 				Vector2 possibleSeedPoint = seedPoints.front();
 				seedPoints.pop();
 				if (checkNeighborhood(possibleSeedPoint)) {
-					return possibleSeedPoint;
+					lastPoint = possibleSeedPoint;
+					return Vector3(possibleSeedPoint, direction);
 				}
 			}
 			notFound = lines.size() > 0 && seedPoints.size() == 0;
@@ -92,12 +101,17 @@ Vector2 EvenSpacedSeedGenerator::getNextPoint() {
 		finished = true;
 	}
 	else {
-		return Vector2((float)width / 2, (float)height / 2);
+		float x = 0 + (rand() % (int)(SeedGenerator::width));
+		float y = 0 + (rand() % (int)(SeedGenerator::height));
+		lastPoint = Vector2(x, y);
+		//lastPoint = Vector2((float)width / 2, (float)height / 2);
+		return Vector3(lastPoint, direction);
 	}
-	return Vector2((float)nan(""), (float)nan(""));
+	return Vector3((float)nan(""), (float)nan(""), (float)nan(""));
 }
 
 void EvenSpacedSeedGenerator::start() {
+	direction = -1.0f;
 }
 
 bool EvenSpacedSeedGenerator::update(Vector2 point) {

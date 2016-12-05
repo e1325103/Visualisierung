@@ -9,11 +9,20 @@ RandomSeedGenerator::~RandomSeedGenerator()
 {
 }
 
-Vector2 RandomSeedGenerator::getNextPoint() {
+Vector3 RandomSeedGenerator::getNextPoint() {
+	if (direction > 0.0f) {
+		direction = -1.0f;
+		return Vector3(lastPoint, direction);
+	}
+	else {
+		direction = 1.0f;
+	}
+
 	current++;
 	float x = 0 + (rand() % (int)(SeedGenerator::width));
 	float y = 0 + (rand() % (int)(SeedGenerator::height));
-	return Vector2(x, y);
+	lastPoint = Vector2(x, y);
+	return Vector3(lastPoint, direction);
 }
 
 void RandomSeedGenerator::start() {
@@ -25,5 +34,5 @@ bool RandomSeedGenerator::update(Vector2 point) {
 }
 
 bool RandomSeedGenerator::isFinished() {
-	return current >= count;
+	return current >= count && direction < 0.0f;
 }

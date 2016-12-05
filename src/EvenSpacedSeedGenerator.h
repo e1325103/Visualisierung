@@ -9,7 +9,7 @@ public:
 	EvenSpacedSeedGenerator(int _width, int _height, int _distance, float _startRel, float _stopRel);
 	~EvenSpacedSeedGenerator();
 
-	Vector2 getNextPoint();
+	Vector3 getNextPoint();
 	void start();
 	bool update(Vector2 point);
 	bool isFinished();

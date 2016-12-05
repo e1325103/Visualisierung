@@ -8,7 +8,7 @@ public:
 	RandomSeedGenerator(int _width, int _height, int _count);
 	~RandomSeedGenerator();
 
-	Vector2 getNextPoint();
+	Vector3 getNextPoint();
 	void start();
 	bool update(Vector2 point);
 	bool isFinished();
