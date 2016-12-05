@@ -19,11 +19,12 @@ void LIC::simulate() {
 
 	float pixelValue = 0;
 
-	//float weights[] = {0.38774f, 0.24477f, 0.06136f};
+	
 
-	float weights[] = { 0.08233f, 0.081929f, 0.08071f, 0.078719f, 0.076014f, 0.072672f, 0.068786 };
+	float weights[] = { 0.08233f, 0.081929f, 0.08071f, 0.078719f, 0.076014f, 0.072672f, 0.068786f };
 
-	//float weights[] = { 1.0f, 1.0f, 1.0f};
+	
+	//float weights[] = { 0.056461f, 0.05618f, 0.055344f, 0.053979f, 0.052124f, 0.049832f, 0.047168f, 0.044202f, 0.04101f, 0.037671f, 0.03426f };
 
 	for (int x = 0; x < vectorField->width(); x++) {
 		for (int y = 0; y < vectorField->height(); y++) {
@@ -44,6 +45,9 @@ void LIC::simulate() {
 
 				// vorwärts ***************************************************
 				Vector2 vector = vectorField->vector(x1, y1);
+				vector.normalise();
+				vector = vector * 6;
+				
 
 				if (isInside(x1 + vector.x() * 1, y1 + vector.y() * 1)) {
 					x1 = x1 + vector.x() * 1;
@@ -60,6 +64,8 @@ void LIC::simulate() {
 
 				// rückwärts **************************************************
 				vector = vectorField->vector(x2, y2);
+				vector.normalise();
+				vector = vector * 6;
 
 				if (isInside(x2 - vector.x() * 1, y2 - vector.y() * 1)) {
 					x2 = x2 - vector.x() * 1;
@@ -70,15 +76,9 @@ void LIC::simulate() {
 				// ************************************************************
 
 				
+			}		
 
-			}
-
-			if (y >= 10 && y <= 10) {
-				if (x >= 60 && x <= 60) {
-					pixelValue = 0;
-				}
-			}
-
+			
 			vectorField->setParameter(x, y, 2, pixelValue);
 		}
 	}
