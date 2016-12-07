@@ -31,8 +31,8 @@ void RungeKuttaIntegrator::simulate() {
 			if (!outside) {
 				Vector3 v = Integrator::interpolateBilinear(tempX, tempY);
 				v.normaliseXY();
-				x = x + v.x() * delta;
-				y = y + v.y() * delta;
+				x = x + v.x() * delta * direction;
+				y = y + v.y() * delta * direction;
 
 				outside = x < 0 || y < 0 || ((int)x + 1) >= vectorField->width() || ((int)y + 1) >= vectorField->height();
 

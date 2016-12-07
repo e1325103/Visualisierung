@@ -103,7 +103,7 @@ void MainWindow::openFileAction()
 
 				vectorField = m_VectorField;
 
-				integrator = new EulerIntegrator(vectorField, new RandomSeedGenerator(vectorField->width(), vectorField->height(), 25), 1.0f / 1.0f, 1600, 0, false);
+				integrator = new RungeKuttaIntegrator(vectorField, new EvenSpacedSeedGenerator(vectorField->width(), vectorField->height(), 20, 2.0, 0.5), 1.0f / 1.0f, 1600, 0, false);
 				integrator->simulate();	
 
 				m_Ui->drawLabel->setPixmap(integrator->paint());
