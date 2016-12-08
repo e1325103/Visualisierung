@@ -43,7 +43,7 @@ void LIC::simulate() {
 
 			for (int k = 1; k <= kernelSize; k++) {
 
-				// vorwärts ***************************************************
+				// forward ***************************************************
 				Vector2 vector = vectorField->vector(x1, y1);
 				vector.normalise();
 				vector = vector * 6;
@@ -62,7 +62,7 @@ void LIC::simulate() {
 
 
 
-				// rückwärts **************************************************
+				// backward **************************************************
 				vector = vectorField->vector(x2, y2);
 				vector.normalise();
 				vector = vector * 6;

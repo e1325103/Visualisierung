@@ -1,12 +1,14 @@
 #include "EulerIntegrator.h"
 
 void EulerIntegrator::simulate() {
+
 	int currentX = 0;
 	int currentY = 0;
 
 	seedGenerator->start();
 
 	while (!seedGenerator->isFinished()) {
+
 		Vector3 startPoint = seedGenerator->getNextPoint();
 		float x = (float)startPoint.x();
 		float y = (float)startPoint.y();

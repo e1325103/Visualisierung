@@ -61,7 +61,7 @@
     <ClCompile Include="src\EvenSpacedSeedGenerator.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="src\Lic.cpp">
+    <ClCompile Include="src\LIC.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>

@@ -1,12 +1,14 @@
 #include "RungeKuttaIntegrator.h"
 
 void RungeKuttaIntegrator::simulate() {
+
 	int currentX = 0;
 	int currentY = 0;
 
 	seedGenerator->start();
 
 	while (!seedGenerator->isFinished()) {
+
 		Vector3 startPoint = seedGenerator->getNextPoint();
 		float x = (float)startPoint.x();
 		float y = (float)startPoint.y();
@@ -29,8 +31,10 @@ void RungeKuttaIntegrator::simulate() {
 			outside = tempX < 0 || tempY < 0 || ((int)tempX + 1) >= vectorField->width() || ((int)tempY + 1) >= vectorField->height();
 
 			if (!outside) {
+
 				Vector3 v = Integrator::interpolateBilinear(tempX, tempY);
 				v.normaliseXY();
+
 				x = x + v.x() * delta * direction;
 				y = y + v.y() * delta * direction;
 

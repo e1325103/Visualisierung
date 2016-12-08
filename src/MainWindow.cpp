@@ -195,16 +195,16 @@ void MainWindow::buttonRedrawClicked() {
 			integrator = new EulerIntegrator(vectorField, new EvenSpacedSeedGenerator(vectorField->width(), vectorField->height(), m_Ui->textDistance->toPlainText().toInt(), 2.0, 0.5), 1.0f / m_Ui->textDelta->toPlainText().toFloat(), m_Ui->textSteps->toPlainText().toInt(), colour, m_Ui->checkArrows->isChecked());
 		}
 		else {
-			integrator = new EulerIntegrator(vectorField, new RandomSeedGenerator(vectorField->width(), vectorField->height(), 25), 1.0f / m_Ui->textNumberRandom->toPlainText().toFloat(), m_Ui->textSteps->toPlainText().toInt(), colour, m_Ui->checkArrows->isChecked());
+			integrator = new EulerIntegrator(vectorField, new RandomSeedGenerator(vectorField->width(), vectorField->height(), m_Ui->textNumberRandom->toPlainText().toInt()), 1.0f / m_Ui->textDelta->toPlainText().toFloat(), m_Ui->textSteps->toPlainText().toInt(), colour, m_Ui->checkArrows->isChecked());
 		}
 	}
 	else {	
 
 		if (m_Ui->radioEven->isChecked()){
-			integrator = new RungeKuttaIntegrator(vectorField, new EvenSpacedSeedGenerator(vectorField->width(), vectorField->height(), m_Ui->textDistance->toPlainText().toInt(), 2.0, 0.5), m_Ui->textDelta->toPlainText().toInt(), m_Ui->textSteps->toPlainText().toInt(), colour, m_Ui->checkArrows->isChecked());
+			integrator = new RungeKuttaIntegrator(vectorField, new EvenSpacedSeedGenerator(vectorField->width(), vectorField->height(), m_Ui->textDistance->toPlainText().toInt(), 2.0, 0.5), m_Ui->textDelta->toPlainText().toFloat(), m_Ui->textSteps->toPlainText().toInt(), colour, m_Ui->checkArrows->isChecked());
 		}
 		else {
-			integrator = new RungeKuttaIntegrator(vectorField, new RandomSeedGenerator(vectorField->width(), vectorField->height(), 25), m_Ui->textNumberRandom->toPlainText().toInt(), m_Ui->textSteps->toPlainText().toInt(), colour, m_Ui->checkArrows->isChecked());
+			integrator = new RungeKuttaIntegrator(vectorField, new RandomSeedGenerator(vectorField->width(), vectorField->height(), m_Ui->textNumberRandom->toPlainText().toInt()), m_Ui->textDelta->toPlainText().toFloat(), m_Ui->textSteps->toPlainText().toInt(), colour, m_Ui->checkArrows->isChecked());
 		}
 	}
 
