@@ -22,6 +22,8 @@ public:
 	Vector3 interpolateBilinear(float x, float y, int parameter);
 
 	VectorField* vectorField;
+	float minParameter;
+	float maxParameter;
 protected:
 	SeedGenerator* seedGenerator;
 	float delta;

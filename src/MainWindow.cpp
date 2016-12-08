@@ -212,6 +212,11 @@ void MainWindow::buttonRedrawClicked() {
 
 	m_Ui->drawLabel->setPixmap(integrator->paint());
 
+	if (m_Ui->groupBoxColour->isChecked()) {
+		m_Ui->labelColourOne->setText(QString::fromStdString((std::to_string(integrator->maxParameter))));
+		m_Ui->labelColourTwo->setText(QString::fromStdString((std::to_string(integrator->minParameter))));
+	}
+
 	setCheckable(true);
 }
 

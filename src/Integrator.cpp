@@ -142,8 +142,8 @@ void Integrator::paintLines(QPainter* painter, int width, Vector3 color) {
 }
 
 void Integrator::paintBackgroundParameter(QPainter* painter, int parameter, Vector3 color1, Vector3 color2) {
-	float maxParameter = std::numeric_limits<float>::min();
-	float minParameter = std::numeric_limits<float>::max();
+	maxParameter = std::numeric_limits<float>::min();
+	minParameter = std::numeric_limits<float>::max();
 
 	for (int x = 0; x < vectorField->width(); x++) {
 		for (int y = 0; y < vectorField->height(); y++) {
@@ -185,16 +185,6 @@ Vector3 Integrator::interpolateBilinear(float x, float y) {
 }
 
 Vector3 Integrator::interpolateBilinear(float x, float y, int parameter) {
-	/*Vector2 position = vectorField->vector((int)x, (int)y);
-	float parameter = vectorField->parameter((int)x, (int)y)[1];
-	if (parameter < minParameter) {
-	minParameter = parameter / 10000.0f;
-	}
-	if (parameter > maxParameter) {
-	maxParameter = parameter;
-	}
-	return Vector3(position.x(), position.y(), parameter);*/
-
 	float topX = ceilf(x);
 	float topY = ceilf(y);
 	float bottomX = floorf(x);
