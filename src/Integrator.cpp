@@ -5,7 +5,6 @@ QPixmap Integrator::paint() {
 	QPainter* painter = new QPainter(&pix);
 
 	painter->setRenderHint(QPainter::Antialiasing);
-	//painter->setRenderHint(QPainter::HighQualityAntialiasing);
 
 	painter->fillRect(0, 0, vectorField->width(), vectorField->height(), QBrush(QColor(255, 255, 255)));
 
@@ -86,19 +85,7 @@ void Integrator::paintArrows(QPainter* painter, int distance, int width, int hei
 			currentVec1 = currentVec1 * vecTemp.magnitudeXY() + QVector2D(x, y);
 			currentVec2 = currentVec2 * vecTemp.magnitudeXY() + QVector2D(x, y);
 			currentVec3 = currentVec3 * vecTemp.magnitudeXY() + QVector2D(x, y);
-
-			/*x1 = x;
-			y1 = y;
-
-			x2 = x1 + 4;
-			y2 = y1 + 8;
-
-			x3 = x1 - 4;
-			y3 = y1 + 8;
-
-
-			currentVec1 = */
-
+			
 
 			painter->drawLine(currentVec1.x(), currentVec1.y(), currentVec2.x(), currentVec2.y());
 			painter->drawLine(currentVec2.x(), currentVec2.y(), currentVec3.x(), currentVec3.y());
@@ -134,10 +121,6 @@ void Integrator::paintLines(QPainter* painter, int width, Vector3 color) {
 			}
 			painter->drawLine(last.x(), last.y(), current.x(), current.y());
 		}
-		/*else if (points.size() == 1) {
-			Vector3 point = *(points.begin()++);
-			painter->drawPoint(point.x(), point.y());
-		}*/
 	}
 }
 
@@ -166,16 +149,7 @@ void Integrator::paintBackgroundParameter(QPainter* painter, int parameter, Vect
 			Vector3 mixColor = color1 * val + color2 * (1.0f - val);
 			pen.setColor(QColor((int)mixColor.x(), (int)mixColor.y(), (int)mixColor.z()));
 			painter->setPen(pen);
-			painter->drawPoint(QPoint(x, y));
-
-			/*Vector3 vec = interpolateBilinear(x, y);
-			vec.normaliseXY();
-			vec = (vec + Vector3(1, 1, 0)) / 2;
-			float val = 127.5f * vec.x() + 127.5f * vec.y();
-			QColor color = QColor::fromHsv(val, 255, 255);
-			pen.setColor(color);
-			painter->setPen(pen);
-			painter->drawPoint(QPoint(x, y));*/
+			painter->drawPoint(QPoint(x, y));			
 		}
 	}
 }

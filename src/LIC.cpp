@@ -16,7 +16,6 @@ void LIC::simulate()
 	}
 				
 
-
 	bool finished = false;
 
 	for (int j = 0; j < vectorField->height(); j++) {
@@ -146,13 +145,6 @@ void LIC::simulate()
 
 			float pixelValue = (noiseSum[0] + noiseSum[1]) / (sumWeight[0] + sumWeight[1]);
 			
-			if (pixelValue <= 0.0f) {
-				pixelValue = 0.0f;
-			}
-			else if (pixelValue > 1.0f) {
-				pixelValue = 1.0f;
-			}
-
 			vectorField->setParameter(i, j, 2, pixelValue);
 		}
 	}

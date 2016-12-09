@@ -14,8 +14,10 @@ MainWindow::MainWindow(QWidget *parent)
 	connect(m_Ui->actionOpen, SIGNAL(triggered()), this, SLOT(openFileAction()));
 	connect(m_Ui->actionClose, SIGNAL(triggered()), this, SLOT(closeAction()));
 
+
+	connect(m_Ui->actionLIC, SIGNAL(triggered()), this, SLOT(licButtonClicked()));
 	
-	connect(m_Ui->buttonLic, SIGNAL(clicked()), this, SLOT(licButtonClicked()));
+	//connect(m_Ui->buttonLic, SIGNAL(clicked()), this, SLOT(licButtonClicked()));
 	connect(m_Ui->buttonRedraw, SIGNAL(clicked()), this, SLOT(buttonRedrawClicked()));
 
 	connect(m_Ui->radioEuler, SIGNAL(clicked()), this, SLOT(eulerRadioClicked()));
@@ -103,7 +105,7 @@ void MainWindow::openFileAction()
 
 				vectorField = m_VectorField;
 
-				integrator = new RungeKuttaIntegrator(vectorField, new EvenSpacedSeedGenerator(vectorField->width(), vectorField->height(), 20, 2.0, 0.5), 1.0f / 1.0f, 1600, 0, false);
+				integrator = new RungeKuttaIntegrator(vectorField, new RandomSeedGenerator(vectorField->width(), vectorField->height(), 50), 1.0f / 1.0f, 1600, 0, false);
 				integrator->simulate();	
 
 				m_Ui->drawLabel->setPixmap(integrator->paint());
@@ -154,7 +156,10 @@ void MainWindow::setCheckable(bool checkable) {
 	m_Ui->groupEven->setEnabled(checkable);
 	m_Ui->groupBoxColour->setEnabled(checkable);
 		
-	m_Ui->buttonLic->setEnabled(checkable);
+	//m_Ui->buttonLic->setEnabled(checkable);
+
+	m_Ui->actionLIC->setEnabled(checkable);
+
 	m_Ui->buttonRedraw->setEnabled(checkable);
 
 	m_Ui->checkArrows->setEnabled(checkable);

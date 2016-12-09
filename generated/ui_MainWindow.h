@@ -36,6 +36,7 @@ class Ui_MainWindow
 public:
     QAction *actionOpen;
     QAction *actionClose;
+    QAction *actionLIC;
     QWidget *centralwidget;
     QVBoxLayout *verticalLayout_2;
     QWidget *widget;
@@ -109,7 +110,6 @@ public:
     QVBoxLayout *verticalLayout_8;
     QWidget *widget_7;
     QVBoxLayout *verticalLayout_9;
-    QPushButton *buttonLic;
     QWidget *widget_21;
     QWidget *widget_12;
     QVBoxLayout *verticalLayout_11;
@@ -117,6 +117,7 @@ public:
     QWidget *widget_27;
     QMenuBar *menubar;
     QMenu *menuFile;
+    QMenu *menuLinear_Integral_Convolution;
 
     void setupUi(QMainWindow *MainWindow)
     {
@@ -127,6 +128,10 @@ public:
         actionOpen->setObjectName(QStringLiteral("actionOpen"));
         actionClose = new QAction(MainWindow);
         actionClose->setObjectName(QStringLiteral("actionClose"));
+        actionLIC = new QAction(MainWindow);
+        actionLIC->setObjectName(QStringLiteral("actionLIC"));
+        actionLIC->setCheckable(true);
+        actionLIC->setEnabled(false);
         centralwidget = new QWidget(MainWindow);
         centralwidget->setObjectName(QStringLiteral("centralwidget"));
         verticalLayout_2 = new QVBoxLayout(centralwidget);
@@ -227,6 +232,7 @@ public:
         horizontalLayout_4->setObjectName(QStringLiteral("horizontalLayout_4"));
         textSteps = new QTextEdit(widget_9);
         textSteps->setObjectName(QStringLiteral("textSteps"));
+        textSteps->setMinimumSize(QSize(0, 25));
         textSteps->setMaximumSize(QSize(100, 30));
         textSteps->setInputMethodHints(Qt::ImhDigitsOnly);
 
@@ -242,6 +248,7 @@ public:
         horizontalLayout_5->setObjectName(QStringLiteral("horizontalLayout_5"));
         textDelta = new QTextEdit(widget_10);
         textDelta->setObjectName(QStringLiteral("textDelta"));
+        textDelta->setMinimumSize(QSize(0, 25));
         textDelta->setMaximumSize(QSize(100, 30));
 
         horizontalLayout_5->addWidget(textDelta);
@@ -257,6 +264,7 @@ public:
 
         widget_14 = new QWidget(widget_2);
         widget_14->setObjectName(QStringLiteral("widget_14"));
+        widget_14->setMinimumSize(QSize(0, 250));
         widget_14->setMaximumSize(QSize(16777215, 250));
         verticalLayout_12 = new QVBoxLayout(widget_14);
         verticalLayout_12->setObjectName(QStringLiteral("verticalLayout_12"));
@@ -286,6 +294,7 @@ public:
         horizontalLayout_8->setObjectName(QStringLiteral("horizontalLayout_8"));
         textNumberRandom = new QTextEdit(widget_18);
         textNumberRandom->setObjectName(QStringLiteral("textNumberRandom"));
+        textNumberRandom->setMinimumSize(QSize(0, 25));
         textNumberRandom->setMaximumSize(QSize(100, 30));
         textNumberRandom->setInputMethodHints(Qt::ImhDigitsOnly);
 
@@ -316,6 +325,7 @@ public:
         textDistance = new QTextEdit(widget_19);
         textDistance->setObjectName(QStringLiteral("textDistance"));
         textDistance->setEnabled(false);
+        textDistance->setMinimumSize(QSize(0, 25));
         textDistance->setMaximumSize(QSize(100, 30));
         textDistance->setInputMethodHints(Qt::ImhDigitsOnly);
 
@@ -340,7 +350,8 @@ public:
 
         widget_4 = new QWidget(centralwidget);
         widget_4->setObjectName(QStringLiteral("widget_4"));
-        widget_4->setMaximumSize(QSize(200, 16777215));
+        widget_4->setMinimumSize(QSize(150, 0));
+        widget_4->setMaximumSize(QSize(150, 16777215));
         verticalLayout_6 = new QVBoxLayout(widget_4);
         verticalLayout_6->setObjectName(QStringLiteral("verticalLayout_6"));
         widget_13 = new QWidget(widget_4);
@@ -568,16 +579,12 @@ public:
         widget_7->setMaximumSize(QSize(16777215, 40));
         verticalLayout_9 = new QVBoxLayout(widget_7);
         verticalLayout_9->setObjectName(QStringLiteral("verticalLayout_9"));
-        buttonLic = new QPushButton(widget_7);
-        buttonLic->setObjectName(QStringLiteral("buttonLic"));
-
-        verticalLayout_9->addWidget(buttonLic);
-
 
         verticalLayout_6->addWidget(widget_7);
 
         widget_21 = new QWidget(widget_4);
         widget_21->setObjectName(QStringLiteral("widget_21"));
+        widget_21->setMinimumSize(QSize(0, 40));
         widget_21->setMaximumSize(QSize(16777215, 40));
 
         verticalLayout_6->addWidget(widget_21);
@@ -615,17 +622,18 @@ public:
         menubar->setGeometry(QRect(0, 0, 444, 21));
         menuFile = new QMenu(menubar);
         menuFile->setObjectName(QStringLiteral("menuFile"));
+        menuLinear_Integral_Convolution = new QMenu(menubar);
+        menuLinear_Integral_Convolution->setObjectName(QStringLiteral("menuLinear_Integral_Convolution"));
         MainWindow->setMenuBar(menubar);
 
         menubar->addAction(menuFile->menuAction());
+        menubar->addAction(menuLinear_Integral_Convolution->menuAction());
         menuFile->addAction(actionOpen);
         menuFile->addSeparator();
         menuFile->addAction(actionClose);
+        menuLinear_Integral_Convolution->addAction(actionLIC);
 
         retranslateUi(MainWindow);
-
-        buttonLic->setDefault(false);
-
 
         QMetaObject::connectSlotsByName(MainWindow);
     } // setupUi
@@ -635,6 +643,7 @@ public:
         MainWindow->setWindowTitle(QApplication::translate("MainWindow", "Visualisierung 1", 0));
         actionOpen->setText(QApplication::translate("MainWindow", "Open ...", 0));
         actionClose->setText(QApplication::translate("MainWindow", "Close", 0));
+        actionLIC->setText(QApplication::translate("MainWindow", "Erstellen", 0));
         labelTop->setText(QApplication::translate("MainWindow", "No data loaded", 0));
         drawLabel->setText(QString());
         groupIntegration->setTitle(QApplication::translate("MainWindow", "Integration", 0));
@@ -668,9 +677,9 @@ public:
         labelColourOne->setText(QApplication::translate("MainWindow", "Farbe 1", 0));
         labelColourTwo->setText(QApplication::translate("MainWindow", "Farbe 2", 0));
         checkArrows->setText(QApplication::translate("MainWindow", "Pfeile", 0));
-        buttonLic->setText(QApplication::translate("MainWindow", "Linear Intergral Convolution", 0));
         buttonRedraw->setText(QApplication::translate("MainWindow", "Neu Zeichnen", 0));
         menuFile->setTitle(QApplication::translate("MainWindow", "File", 0));
+        menuLinear_Integral_Convolution->setTitle(QApplication::translate("MainWindow", "Linear Integral Convolution", 0));
     } // retranslateUi
 
 };
