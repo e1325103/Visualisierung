@@ -60,7 +60,7 @@ void VectorField::setParameter(const int x, const int y, const int index, const 
 		parameter = &m_Parameters[x + y*m_Width];
 	}
 
-	if (parameter->size() <= index) {
+	if (((int)parameter->size()) <= index) {
 		parameter->resize(index + 1, 0.0f);
 	}
 	(*parameter)[index] = value;

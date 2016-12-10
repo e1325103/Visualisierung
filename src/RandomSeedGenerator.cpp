@@ -2,7 +2,7 @@
 
 RandomSeedGenerator::RandomSeedGenerator(int _width, int _height, int _count) : SeedGenerator(_width, _height), count(_count), current(0)
 {
-	srand(time(NULL));
+	srand((int)time(NULL));
 }
 
 RandomSeedGenerator::~RandomSeedGenerator()
@@ -19,8 +19,8 @@ Vector3 RandomSeedGenerator::getNextPoint() {
 	}
 
 	current++;
-	float x = 0 + (rand() % (int)(SeedGenerator::width));
-	float y = 0 + (rand() % (int)(SeedGenerator::height));
+	float x = 0 + (float)(rand() % (int)(SeedGenerator::width));
+	float y = 0 + (float)(rand() % (int)(SeedGenerator::height));
 	lastPoint = Vector2(x, y);
 	return Vector3(lastPoint, direction);
 }

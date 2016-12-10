@@ -101,10 +101,9 @@ Vector3 EvenSpacedSeedGenerator::getNextPoint() {
 		finished = true;
 	}
 	else {
-		float x = 0 + (rand() % (int)(SeedGenerator::width));
-		float y = 0 + (rand() % (int)(SeedGenerator::height));
+		float x = 0 + (float)(rand() % (int)(SeedGenerator::width));
+		float y = 0 + (float)(rand() % (int)(SeedGenerator::height));
 		lastPoint = Vector2(x, y);
-		//lastPoint = Vector2((float)width / 2, (float)height / 2);
 		return Vector3(lastPoint, direction);
 	}
 	return Vector3((float)nan(""), (float)nan(""), (float)nan(""));
