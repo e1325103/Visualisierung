@@ -104,22 +104,28 @@
              <property name="minimumSize">
               <size>
                <width>200</width>
-               <height>225</height>
+               <height>250</height>
               </size>
              </property>
              <property name="maximumSize">
               <size>
                <width>200</width>
-               <height>225</height>
+               <height>250</height>
               </size>
              </property>
              <layout class="QVBoxLayout" name="verticalLayout_15">
               <item>
                <widget class="QGroupBox" name="groupIntegration">
+                <property name="minimumSize">
+                 <size>
+                  <width>0</width>
+                  <height>250</height>
+                 </size>
+                </property>
                 <property name="maximumSize">
                  <size>
                   <width>16777215</width>
-                  <height>210</height>
+                  <height>250</height>
                  </size>
                 </property>
                 <property name="title">
@@ -134,10 +140,16 @@
                 <layout class="QVBoxLayout" name="verticalLayout_10">
                  <item>
                   <widget class="QWidget" name="widget_3" native="true">
+                   <property name="minimumSize">
+                    <size>
+                     <width>0</width>
+                     <height>42</height>
+                    </size>
+                   </property>
                    <property name="maximumSize">
                     <size>
                      <width>16777215</width>
-                     <height>40</height>
+                     <height>42</height>
                     </size>
                    </property>
                    <layout class="QVBoxLayout" name="verticalLayout_5">
@@ -156,10 +168,16 @@
                  </item>
                  <item>
                   <widget class="QWidget" name="widget_8" native="true">
+                   <property name="minimumSize">
+                    <size>
+                     <width>0</width>
+                     <height>42</height>
+                    </size>
+                   </property>
                    <property name="maximumSize">
                     <size>
                      <width>16777215</width>
-                     <height>40</height>
+                     <height>42</height>
                     </size>
                    </property>
                    <layout class="QHBoxLayout" name="horizontalLayout_3">
@@ -178,7 +196,7 @@
                    <property name="maximumSize">
                     <size>
                      <width>16777215</width>
-                     <height>42</height>
+                     <height>45</height>
                     </size>
                    </property>
                    <layout class="QHBoxLayout" name="horizontalLayout_4">
@@ -207,7 +225,7 @@ p, li { white-space: pre-wrap; }
 &lt;p style=&quot;-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;br /&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
                       </property>
                       <property name="placeholderText">
-                       <string>Anzahl Schritte</string>
+                       <string>Schritte</string>
                       </property>
                      </widget>
                     </item>
@@ -219,7 +237,7 @@ p, li { white-space: pre-wrap; }
                    <property name="maximumSize">
                     <size>
                      <width>16777215</width>
-                     <height>42</height>
+                     <height>45</height>
                     </size>
                    </property>
                    <layout class="QHBoxLayout" name="horizontalLayout_5">
@@ -256,7 +274,7 @@ p, li { white-space: pre-wrap; }
              <property name="minimumSize">
               <size>
                <width>200</width>
-               <height>250</height>
+               <height>260</height>
               </size>
              </property>
              <property name="maximumSize">
@@ -280,6 +298,12 @@ p, li { white-space: pre-wrap; }
                 <layout class="QVBoxLayout" name="verticalLayout_14">
                  <item>
                   <widget class="QWidget" name="widget_16" native="true">
+                   <property name="minimumSize">
+                    <size>
+                     <width>0</width>
+                     <height>42</height>
+                    </size>
+                   </property>
                    <property name="maximumSize">
                     <size>
                      <width>16777215</width>
@@ -305,7 +329,7 @@ p, li { white-space: pre-wrap; }
                    <property name="maximumSize">
                     <size>
                      <width>16777215</width>
-                     <height>42</height>
+                     <height>45</height>
                     </size>
                    </property>
                    <layout class="QHBoxLayout" name="horizontalLayout_8">
@@ -343,6 +367,12 @@ p, li { white-space: pre-wrap; }
                  </item>
                  <item>
                   <widget class="QWidget" name="widget_17" native="true">
+                   <property name="minimumSize">
+                    <size>
+                     <width>0</width>
+                     <height>42</height>
+                    </size>
+                   </property>
                    <property name="maximumSize">
                     <size>
                      <width>16777215</width>
@@ -368,7 +398,7 @@ p, li { white-space: pre-wrap; }
                    <property name="maximumSize">
                     <size>
                      <width>16777215</width>
-                     <height>42</height>
+                     <height>45</height>
                     </size>
                    </property>
                    <layout class="QHBoxLayout" name="horizontalLayout_9">
@@ -460,6 +490,12 @@ p, li { white-space: pre-wrap; }
                 <layout class="QVBoxLayout" name="verticalLayout_18">
                  <item>
                   <widget class="QWidget" name="widget_23" native="true">
+                   <property name="minimumSize">
+                    <size>
+                     <width>0</width>
+                     <height>42</height>
+                    </size>
+                   </property>
                    <layout class="QVBoxLayout" name="verticalLayout_17">
                     <item>
                      <widget class="QRadioButton" name="radioColourOne">
@@ -476,6 +512,12 @@ p, li { white-space: pre-wrap; }
                  </item>
                  <item>
                   <widget class="QWidget" name="widget_24" native="true">
+                   <property name="minimumSize">
+                    <size>
+                     <width>0</width>
+                     <height>42</height>
+                    </size>
+                   </property>
                    <layout class="QVBoxLayout" name="verticalLayout_16">
                     <item>
                      <widget class="QRadioButton" name="radioColourTwo">
