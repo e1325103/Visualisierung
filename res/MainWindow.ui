@@ -7,7 +7,7 @@
     <x>0</x>
     <y>0</y>
     <width>520</width>
-    <height>614</height>
+    <height>684</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -104,7 +104,7 @@
              <property name="minimumSize">
               <size>
                <width>200</width>
-               <height>250</height>
+               <height>260</height>
               </size>
              </property>
              <property name="maximumSize">
@@ -1485,6 +1485,12 @@ p, li { white-space: pre-wrap; }
              <layout class="QVBoxLayout" name="verticalLayout_11">
               <item>
                <widget class="QPushButton" name="buttonRedraw">
+                <property name="minimumSize">
+                 <size>
+                  <width>0</width>
+                  <height>20</height>
+                 </size>
+                </property>
                 <property name="text">
                  <string>Neu Zeichnen</string>
                 </property>

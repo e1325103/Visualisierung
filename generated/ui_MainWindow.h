@@ -123,7 +123,7 @@ public:
     {
         if (MainWindow->objectName().isEmpty())
             MainWindow->setObjectName(QStringLiteral("MainWindow"));
-        MainWindow->resize(520, 614);
+        MainWindow->resize(520, 684);
         actionOpen = new QAction(MainWindow);
         actionOpen->setObjectName(QStringLiteral("actionOpen"));
         actionClose = new QAction(MainWindow);
@@ -189,20 +189,22 @@ public:
         verticalLayout_4->setObjectName(QStringLiteral("verticalLayout_4"));
         widget_11 = new QWidget(widget_2);
         widget_11->setObjectName(QStringLiteral("widget_11"));
-        widget_11->setMinimumSize(QSize(200, 225));
-        widget_11->setMaximumSize(QSize(200, 225));
+        widget_11->setMinimumSize(QSize(200, 260));
+        widget_11->setMaximumSize(QSize(200, 250));
         verticalLayout_15 = new QVBoxLayout(widget_11);
         verticalLayout_15->setObjectName(QStringLiteral("verticalLayout_15"));
         groupIntegration = new QGroupBox(widget_11);
         groupIntegration->setObjectName(QStringLiteral("groupIntegration"));
-        groupIntegration->setMaximumSize(QSize(16777215, 210));
+        groupIntegration->setMinimumSize(QSize(0, 250));
+        groupIntegration->setMaximumSize(QSize(16777215, 250));
         groupIntegration->setCheckable(false);
         groupIntegration->setChecked(false);
         verticalLayout_10 = new QVBoxLayout(groupIntegration);
         verticalLayout_10->setObjectName(QStringLiteral("verticalLayout_10"));
         widget_3 = new QWidget(groupIntegration);
         widget_3->setObjectName(QStringLiteral("widget_3"));
-        widget_3->setMaximumSize(QSize(16777215, 40));
+        widget_3->setMinimumSize(QSize(0, 42));
+        widget_3->setMaximumSize(QSize(16777215, 42));
         verticalLayout_5 = new QVBoxLayout(widget_3);
         verticalLayout_5->setObjectName(QStringLiteral("verticalLayout_5"));
         radioEuler = new QRadioButton(widget_3);
@@ -216,7 +218,8 @@ public:
 
         widget_8 = new QWidget(groupIntegration);
         widget_8->setObjectName(QStringLiteral("widget_8"));
-        widget_8->setMaximumSize(QSize(16777215, 40));
+        widget_8->setMinimumSize(QSize(0, 42));
+        widget_8->setMaximumSize(QSize(16777215, 42));
         horizontalLayout_3 = new QHBoxLayout(widget_8);
         horizontalLayout_3->setObjectName(QStringLiteral("horizontalLayout_3"));
         radioRunge = new QRadioButton(widget_8);
@@ -229,7 +232,7 @@ public:
 
         widget_9 = new QWidget(groupIntegration);
         widget_9->setObjectName(QStringLiteral("widget_9"));
-        widget_9->setMaximumSize(QSize(16777215, 42));
+        widget_9->setMaximumSize(QSize(16777215, 45));
         horizontalLayout_4 = new QHBoxLayout(widget_9);
         horizontalLayout_4->setObjectName(QStringLiteral("horizontalLayout_4"));
         textSteps = new QTextEdit(widget_9);
@@ -245,7 +248,7 @@ public:
 
         widget_10 = new QWidget(groupIntegration);
         widget_10->setObjectName(QStringLiteral("widget_10"));
-        widget_10->setMaximumSize(QSize(16777215, 42));
+        widget_10->setMaximumSize(QSize(16777215, 45));
         horizontalLayout_5 = new QHBoxLayout(widget_10);
         horizontalLayout_5->setObjectName(QStringLiteral("horizontalLayout_5"));
         textDelta = new QTextEdit(widget_10);
@@ -266,7 +269,7 @@ public:
 
         widget_14 = new QWidget(widget_2);
         widget_14->setObjectName(QStringLiteral("widget_14"));
-        widget_14->setMinimumSize(QSize(200, 250));
+        widget_14->setMinimumSize(QSize(200, 260));
         widget_14->setMaximumSize(QSize(200, 250));
         verticalLayout_12 = new QVBoxLayout(widget_14);
         verticalLayout_12->setObjectName(QStringLiteral("verticalLayout_12"));
@@ -277,6 +280,7 @@ public:
         verticalLayout_14->setObjectName(QStringLiteral("verticalLayout_14"));
         widget_16 = new QWidget(groupEven);
         widget_16->setObjectName(QStringLiteral("widget_16"));
+        widget_16->setMinimumSize(QSize(0, 42));
         widget_16->setMaximumSize(QSize(16777215, 40));
         verticalLayout_13 = new QVBoxLayout(widget_16);
         verticalLayout_13->setObjectName(QStringLiteral("verticalLayout_13"));
@@ -291,7 +295,7 @@ public:
 
         widget_18 = new QWidget(groupEven);
         widget_18->setObjectName(QStringLiteral("widget_18"));
-        widget_18->setMaximumSize(QSize(16777215, 42));
+        widget_18->setMaximumSize(QSize(16777215, 45));
         horizontalLayout_8 = new QHBoxLayout(widget_18);
         horizontalLayout_8->setObjectName(QStringLiteral("horizontalLayout_8"));
         textNumberRandom = new QTextEdit(widget_18);
@@ -307,6 +311,7 @@ public:
 
         widget_17 = new QWidget(groupEven);
         widget_17->setObjectName(QStringLiteral("widget_17"));
+        widget_17->setMinimumSize(QSize(0, 42));
         widget_17->setMaximumSize(QSize(16777215, 40));
         horizontalLayout_7 = new QHBoxLayout(widget_17);
         horizontalLayout_7->setObjectName(QStringLiteral("horizontalLayout_7"));
@@ -321,7 +326,7 @@ public:
 
         widget_19 = new QWidget(groupEven);
         widget_19->setObjectName(QStringLiteral("widget_19"));
-        widget_19->setMaximumSize(QSize(16777215, 42));
+        widget_19->setMaximumSize(QSize(16777215, 45));
         horizontalLayout_9 = new QHBoxLayout(widget_19);
         horizontalLayout_9->setObjectName(QStringLiteral("horizontalLayout_9"));
         textDistance = new QTextEdit(widget_19);
@@ -369,6 +374,7 @@ public:
         verticalLayout_18->setObjectName(QStringLiteral("verticalLayout_18"));
         widget_23 = new QWidget(groupBoxColour);
         widget_23->setObjectName(QStringLiteral("widget_23"));
+        widget_23->setMinimumSize(QSize(0, 42));
         verticalLayout_17 = new QVBoxLayout(widget_23);
         verticalLayout_17->setObjectName(QStringLiteral("verticalLayout_17"));
         radioColourOne = new QRadioButton(widget_23);
@@ -382,6 +388,7 @@ public:
 
         widget_24 = new QWidget(groupBoxColour);
         widget_24->setObjectName(QStringLiteral("widget_24"));
+        widget_24->setMinimumSize(QSize(0, 42));
         verticalLayout_16 = new QVBoxLayout(widget_24);
         verticalLayout_16->setObjectName(QStringLiteral("verticalLayout_16"));
         radioColourTwo = new QRadioButton(widget_24);
@@ -599,6 +606,7 @@ public:
         verticalLayout_11->setObjectName(QStringLiteral("verticalLayout_11"));
         buttonRedraw = new QPushButton(widget_12);
         buttonRedraw->setObjectName(QStringLiteral("buttonRedraw"));
+        buttonRedraw->setMinimumSize(QSize(0, 20));
 
         verticalLayout_11->addWidget(buttonRedraw);
 
@@ -657,7 +665,7 @@ public:
 "p, li { white-space: pre-wrap; }\n"
 "</style></head><body style=\" font-family:'MS Shell Dlg 2'; font-size:8.25pt; font-weight:400; font-style:normal;\">\n"
 "<p style=\"-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><br /></p></body></html>", 0));
-        textSteps->setPlaceholderText(QApplication::translate("MainWindow", "Anzahl Schritte", 0));
+        textSteps->setPlaceholderText(QApplication::translate("MainWindow", "Schritte", 0));
         textDelta->setPlaceholderText(QApplication::translate("MainWindow", "Delta", 0));
         groupEven->setTitle(QApplication::translate("MainWindow", "Starpunktverteilung", 0));
         radioRandom->setText(QApplication::translate("MainWindow", "Zufallsgeneriert", 0));
