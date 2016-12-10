@@ -363,10 +363,11 @@ public:
         verticalLayout_6->setObjectName(QStringLiteral("verticalLayout_6"));
         widget_13 = new QWidget(widget_4);
         widget_13->setObjectName(QStringLiteral("widget_13"));
-        widget_13->setMinimumSize(QSize(190, 210));
+        widget_13->setMinimumSize(QSize(190, 220));
         widget_13->setMaximumSize(QSize(200, 210));
         verticalLayout_19 = new QVBoxLayout(widget_13);
         verticalLayout_19->setObjectName(QStringLiteral("verticalLayout_19"));
+        verticalLayout_19->setContentsMargins(-1, 9, -1, -1);
         groupBoxColour = new QGroupBox(widget_13);
         groupBoxColour->setObjectName(QStringLiteral("groupBoxColour"));
         groupBoxColour->setCheckable(true);

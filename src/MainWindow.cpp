@@ -197,10 +197,10 @@ void MainWindow::buttonRedrawClicked() {
 
 	if (m_Ui->radioEuler->isChecked()) {
 		if (m_Ui->radioEven->isChecked()){
-			integrator = new EulerIntegrator(vectorField, new EvenSpacedSeedGenerator(vectorField->width(), vectorField->height(), m_Ui->textDistance->toPlainText().toInt(), 2.0, 0.5), 1.0f / m_Ui->textDelta->toPlainText().toFloat(), m_Ui->textSteps->toPlainText().toInt(), colour, m_Ui->checkArrows->isChecked());
+			integrator = new EulerIntegrator(vectorField, new EvenSpacedSeedGenerator(vectorField->width(), vectorField->height(), m_Ui->textDistance->toPlainText().toInt(), 2.0, 0.5), m_Ui->textDelta->toPlainText().toFloat(), m_Ui->textSteps->toPlainText().toInt(), colour, m_Ui->checkArrows->isChecked());
 		}
 		else {
-			integrator = new EulerIntegrator(vectorField, new RandomSeedGenerator(vectorField->width(), vectorField->height(), m_Ui->textNumberRandom->toPlainText().toInt()), 1.0f / m_Ui->textDelta->toPlainText().toFloat(), m_Ui->textSteps->toPlainText().toInt(), colour, m_Ui->checkArrows->isChecked());
+			integrator = new EulerIntegrator(vectorField, new RandomSeedGenerator(vectorField->width(), vectorField->height(), m_Ui->textNumberRandom->toPlainText().toInt()), m_Ui->textDelta->toPlainText().toFloat(), m_Ui->textSteps->toPlainText().toInt(), colour, m_Ui->checkArrows->isChecked());
 		}
 	}
 	else {	

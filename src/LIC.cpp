@@ -71,15 +71,15 @@ void LIC::simulate()
 
 						float stepLength = 100000.0f;
 
-						if (vector.x() < -0.050000f) {
+						if (vector.x() < 0.0f) {
 							stepLength = (int(borderX) - borderX) / vector.x();
 						}
-						else if (vector.x() > 0.050000f) {
+						else if (vector.x() > 0.0f) {
 							stepLength = (int(int(borderX) + 1.5f) - borderX);
 						}
 
 
-						if (vector.y() < -0.050000f) {
+						if (vector.y() < 0.0f) {
 							float tempStepLength = (int(borderY) - borderY) / vector.y();
 
 							if (tempStepLength < stepLength) {
@@ -87,7 +87,7 @@ void LIC::simulate()
 							}
 
 						}
-						else if (vector.y() > 0.050000f) {
+						else if (vector.y() > 0.0f) {
 							float tempStepLength = int(int(borderY) + 1.5f) - borderY;
 
 							if (tempStepLength < stepLength) {

@@ -469,7 +469,7 @@ p, li { white-space: pre-wrap; }
              <property name="minimumSize">
               <size>
                <width>190</width>
-               <height>210</height>
+               <height>220</height>
               </size>
              </property>
              <property name="maximumSize">
@@ -479,6 +479,9 @@ p, li { white-space: pre-wrap; }
               </size>
              </property>
              <layout class="QVBoxLayout" name="verticalLayout_19">
+              <property name="topMargin">
+               <number>9</number>
+              </property>
               <item>
                <widget class="QGroupBox" name="groupBoxColour">
                 <property name="title">
