@@ -123,14 +123,14 @@ public:
     {
         if (MainWindow->objectName().isEmpty())
             MainWindow->setObjectName(QStringLiteral("MainWindow"));
-        MainWindow->resize(444, 585);
+        MainWindow->resize(520, 614);
         actionOpen = new QAction(MainWindow);
         actionOpen->setObjectName(QStringLiteral("actionOpen"));
         actionClose = new QAction(MainWindow);
         actionClose->setObjectName(QStringLiteral("actionClose"));
         actionLIC = new QAction(MainWindow);
         actionLIC->setObjectName(QStringLiteral("actionLIC"));
-        actionLIC->setCheckable(true);
+        actionLIC->setCheckable(false);
         actionLIC->setEnabled(false);
         centralwidget = new QWidget(MainWindow);
         centralwidget->setObjectName(QStringLiteral("centralwidget"));
@@ -183,12 +183,14 @@ public:
 
         widget_2 = new QWidget(centralwidget);
         widget_2->setObjectName(QStringLiteral("widget_2"));
+        widget_2->setMinimumSize(QSize(200, 0));
         widget_2->setMaximumSize(QSize(200, 16777215));
         verticalLayout_4 = new QVBoxLayout(widget_2);
         verticalLayout_4->setObjectName(QStringLiteral("verticalLayout_4"));
         widget_11 = new QWidget(widget_2);
         widget_11->setObjectName(QStringLiteral("widget_11"));
-        widget_11->setMaximumSize(QSize(16777215, 225));
+        widget_11->setMinimumSize(QSize(200, 225));
+        widget_11->setMaximumSize(QSize(200, 225));
         verticalLayout_15 = new QVBoxLayout(widget_11);
         verticalLayout_15->setObjectName(QStringLiteral("verticalLayout_15"));
         groupIntegration = new QGroupBox(widget_11);
@@ -264,8 +266,8 @@ public:
 
         widget_14 = new QWidget(widget_2);
         widget_14->setObjectName(QStringLiteral("widget_14"));
-        widget_14->setMinimumSize(QSize(0, 250));
-        widget_14->setMaximumSize(QSize(16777215, 250));
+        widget_14->setMinimumSize(QSize(200, 250));
+        widget_14->setMaximumSize(QSize(200, 250));
         verticalLayout_12 = new QVBoxLayout(widget_14);
         verticalLayout_12->setObjectName(QStringLiteral("verticalLayout_12"));
         groupEven = new QGroupBox(widget_14);
@@ -350,13 +352,14 @@ public:
 
         widget_4 = new QWidget(centralwidget);
         widget_4->setObjectName(QStringLiteral("widget_4"));
-        widget_4->setMinimumSize(QSize(150, 0));
-        widget_4->setMaximumSize(QSize(150, 16777215));
+        widget_4->setMinimumSize(QSize(200, 0));
+        widget_4->setMaximumSize(QSize(200, 16777215));
         verticalLayout_6 = new QVBoxLayout(widget_4);
         verticalLayout_6->setObjectName(QStringLiteral("verticalLayout_6"));
         widget_13 = new QWidget(widget_4);
         widget_13->setObjectName(QStringLiteral("widget_13"));
-        widget_13->setMaximumSize(QSize(16777215, 210));
+        widget_13->setMinimumSize(QSize(190, 210));
+        widget_13->setMaximumSize(QSize(200, 210));
         verticalLayout_19 = new QVBoxLayout(widget_13);
         verticalLayout_19->setObjectName(QStringLiteral("verticalLayout_19"));
         groupBoxColour = new QGroupBox(widget_13);
@@ -619,7 +622,7 @@ public:
         MainWindow->setCentralWidget(centralwidget);
         menubar = new QMenuBar(MainWindow);
         menubar->setObjectName(QStringLiteral("menubar"));
-        menubar->setGeometry(QRect(0, 0, 444, 21));
+        menubar->setGeometry(QRect(0, 0, 520, 21));
         menuFile = new QMenu(menubar);
         menuFile->setObjectName(QStringLiteral("menuFile"));
         menuLinear_Integral_Convolution = new QMenu(menubar);

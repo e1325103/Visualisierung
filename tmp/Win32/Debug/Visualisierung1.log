@@ -1,4 +1,4 @@
-﻿Der Buildvorgang wurde am 09.12.2016 22:51:13 gestartet.
+﻿Der Buildvorgang wurde am 10.12.2016 15:42:48 gestartet.
      1>Projekt "D:\TU\Semester 6\Visualisierung\ganzganzNeu\Visualisierung\Visualisierung1.vcxproj" auf Knoten "2", Build Ziel(e).
      1>CustomBuild:
          UIC MainWindow.ui
@@ -32,4 +32,4 @@
 
 Build erfolgreich.
 
-Verstrichene Zeit 00:00:05.08
+Verstrichene Zeit 00:00:11.62
